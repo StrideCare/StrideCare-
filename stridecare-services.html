@@ -354,6 +354,35 @@ footer{background:var(--foot);padding:5rem 5% 2.5rem}
 .sec-h{font-family:var(--f);font-size:clamp(1.9rem,3vw,2.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--t1);margin-bottom:3rem}
 .sec-h .serif{font-family:var(--fs);font-style:italic;font-weight:700;color:var(--teal)}
 
+
+@media(max-width:768px){
+  /* Hero */
+  .page-hero{padding:40px 5% 36px}
+  .hero-title-row{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .hero-title-row h1{font-size:clamp(1.7rem,7vw,2.2rem) !important;white-space:normal !important}
+  .hero-title-row h1 .serif{font-size:inherit}
+  .svc-hero-chips{gap:6px}
+  .chip{font-size:.7rem;padding:.3rem .7rem}
+  .hero-sub{font-size:.88rem}
+
+  /* Grid — single column */
+  .svc-grid{grid-template-columns:1fr !important;gap:1rem}
+  .svc-grid .svc-card:last-child:nth-child(3n+1){grid-column:auto !important}
+
+  /* Cards */
+  .svc-card-top{padding:1.5rem 1.5rem 1rem}
+  .svc-card-bottom{min-height:auto;padding:.875rem 1.5rem}
+  .svc-badge{font-size:.6rem}
+  .svc-head{gap:10px}
+  .svc-card h2{font-size:.95rem}
+  .svc-points li{font-size:.82rem}
+
+  /* Funding banner */
+  .funding-banner{padding:1.75rem;flex-direction:column;border-radius:14px}
+  .funding-banner h3{font-size:1.25rem}
+  .services-sec{padding:48px 5%}
+}
+
 </style>
 </head>
 <body>

@@ -393,6 +393,38 @@ section{padding:80px 5%}
 .who-icon-svg{width:52px;height:52px;border-radius:14px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--teal-dk)}
 .who-icon-svg svg{width:26px;height:26px}
 
+
+@media(max-width:768px){
+  /* Remove empty space */
+  .approach-split{grid-template-columns:1fr !important;min-height:auto !important}
+  .as-left{padding:3rem 5% !important;min-height:auto !important}
+  .as-right{padding:2.5rem 5% !important;min-height:auto !important}
+
+  /* Hero compact */
+  .page-hero{padding:40px 5% 36px !important}
+  .page-hero h1{font-size:clamp(1.8rem,7vw,2.6rem) !important}
+
+  /* Principle cards */
+  .principle-cards{gap:.75rem}
+  .pc{padding:1rem 1.25rem}
+  .pc-icon{width:36px;height:36px}
+
+  /* Who grid */
+  .who-grid{grid-template-columns:1fr 1fr !important;gap:.875rem;margin-top:1rem}
+  .who-card{padding:1.25rem}
+
+  /* Journey steps */
+  .js-full{padding:1rem 1rem}
+  .js-num{width:40px;height:40px;font-size:.78rem;flex-shrink:0}
+  .js-full h3{font-size:1rem}
+  .js-full p{font-size:.82rem}
+
+  /* CTA */
+  .cta-teal{padding:2rem 1.5rem;border-radius:14px}
+  .cta-teal h2{font-size:1.6rem}
+  section{padding:48px 5%}
+}
+
 </style>
 </head>
 <body>
