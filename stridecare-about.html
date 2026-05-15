@@ -202,10 +202,252 @@ footer{background:var(--foot);padding:5rem 5% 2.5rem}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
   nav ul{display:none}
 }
-@media(max-width:600px){
-  .creds-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
+
+
+/* ════════════════════════════════════════
+   RESPONSIVE — TABLET (max 960px)
+   ════════════════════════════════════════ */
+@media(max-width:960px){
+
+  /* NAV */
+  .nav-links{display:none}
+  nav{padding:0 4%}
+
+  /* HERO */
+  .hero{
+    grid-template-columns:1fr;
+    padding:100px 5% 60px;
+    min-height:auto;
+    gap:2.5rem;
+  }
+  .hero h1{font-size:clamp(2.2rem,6vw,3rem)}
+  .hero-stats{flex-wrap:wrap;gap:.5rem}
+  .hsi{flex:0 0 calc(33% - .5rem);padding:.5rem;border-right:none;border-bottom:1px solid var(--b1)}
+
+  /* WHY */
+  .why-layout{grid-template-columns:1fr;gap:2rem}
+  .why-header{max-width:100%}
+  .why-grid{grid-template-columns:1fr 1fr}
+
+  /* SERVICES */
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-grid .svc-card:last-child:nth-child(3n+1){grid-column:auto}
+  .svc-head{flex-direction:column;align-items:flex-start}
+
+  /* JOURNEY */
+  .journey-outer{grid-template-columns:1fr}
+  .journey-left-inner{position:relative;top:auto;padding:3rem 5%}
+  .journey-right{padding:3rem 5%}
+  .journey-line-wrap{left:1rem}
+  .journey-steps{padding-left:1.5rem}
+
+  /* LOCATION */
+  .location-grid{grid-template-columns:1fr;gap:2rem}
+  .map-wrap{height:250px}
+
+  /* ABOUT HERO */
+  .hero-split,.about-hero-split{grid-template-columns:1fr}
+  .hs-left,.hs-right{padding:3rem 5%}
+  .ah-left,.ah-right{padding:3rem 5%}
+  .ah-profile-card{max-width:100%}
+
+  /* ABOUT WHY SPLIT */
+  .why-split,.approach-split{grid-template-columns:1fr}
+  .as-left,.as-right,.ws-left,.ws-right{padding:3rem 5%}
+
+  /* WHO GRID */
+  .who-grid{grid-template-columns:1fr 1fr}
+
+  /* BOOK */
+  .book-layout{grid-template-columns:1fr;margin-top:68px}
+  .book-left,.book-right{padding:3rem 5%}
+  .form-row{grid-template-columns:1fr}
+  .contact-methods .cm{flex-direction:column;gap:8px}
+
+  /* FOOTER */
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-brand{grid-column:1/-1;justify-content:center}
+  .footer-brand img{width:200px}
+
+  /* LEGAL */
+  .legal-layout{grid-template-columns:1fr;padding:3rem 5%}
+  .legal-toc{display:none}
+
+  /* FUNDING BANNER */
+  .funding-banner{flex-direction:column;padding:2rem}
+
+  /* CTA */
+  .cta-row{flex-direction:column;align-items:center}
 }
+
+/* ════════════════════════════════════════
+   RESPONSIVE — MOBILE (max 600px)
+   ════════════════════════════════════════ */
+@media(max-width:600px){
+
+  /* NAV */
+  .nav-brand-name{font-size:.9rem}
+  .nav-brand-sub{font-size:.55rem}
+  .nav-logo{height:48px}
+  .nav-cta{font-size:.75rem;padding:.45rem .9rem}
+
+  /* HERO */
+  .hero{padding:90px 5% 50px}
+  .hero h1{font-size:clamp(1.8rem,8vw,2.4rem);letter-spacing:-.03em}
+  .hero-sub{font-size:.9rem}
+  .hero-actions{flex-direction:column}
+  .hero-actions a{text-align:center;justify-content:center}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+  .hsi{padding:.4rem .25rem}
+  .hsi-val{font-size:.72rem}
+  .hsi-label{font-size:.6rem}
+
+  /* AUDIENCE CARDS */
+  .aud-cards{gap:12px}
+  .aud-actions{flex-wrap:wrap}
+
+  /* WHY */
+  .why-grid{grid-template-columns:1fr}
+  .why-card{padding:1.5rem}
+
+  /* SERVICES */
+  .svc-grid{grid-template-columns:1fr}
+  .svc-head{flex-direction:column;gap:1rem}
+  .svc-head .btn-outline{align-self:flex-start}
+
+  /* TICKER */
+  .ticker-item{font-size:.75rem;padding:0 1.5rem}
+
+  /* JOURNEY */
+  .journey-left-inner{padding:2.5rem 5%}
+  .journey-left-inner h2{font-size:clamp(1.8rem,7vw,2.5rem)}
+  .journey-step{grid-template-columns:36px 1fr;gap:1rem}
+  .jcontent h3{font-size:1.1rem}
+
+  /* LOCATION */
+  .loc-row{flex-direction:column;gap:.25rem}
+  .loc-label{min-width:auto}
+
+  /* ABOUT */
+  .hs-left h1,.ah-left-inner h1{font-size:clamp(1.9rem,7vw,2.6rem)}
+  .profile-card{border-radius:16px}
+  .profile-top{padding:4.5rem 1.5rem 1.25rem}
+  .profile-details{padding:1rem 1.25rem 1.25rem}
+  .pd-row{flex-direction:column;gap:.25rem}
+  .pd-label{min-width:auto}
+
+  /* WHO GRID */
+  .who-grid{grid-template-columns:1fr}
+
+  /* APPROACH */
+  .js-full{flex-direction:row;gap:1rem}
+  .js-num{width:40px;height:40px;font-size:.75rem;flex-shrink:0}
+
+  /* BOOK */
+  .book-left h1{font-size:clamp(1.8rem,7vw,2.4rem)}
+  .contact-methods{gap:8px}
+  .cm{padding:.75rem 1rem}
+  .info-pills{gap:6px}
+  .info-pill{font-size:.7rem;padding:.3rem .75rem}
+  .form-card{padding:1.5rem;border-radius:16px}
+  .ah-name-card{left:1rem;right:1rem;padding:1rem 1.25rem}
+
+  /* PRINCIPLE CARDS */
+  .pc{padding:1rem 1.25rem}
+  .value-cards{gap:.875rem}
+  .vc{padding:1rem 1.25rem}
+
+  /* FOOTER */
+  .footer-grid{grid-template-columns:1fr}
+  .footer-brand img{width:180px}
+  .footer-bottom{flex-direction:column;gap:.75rem;text-align:center}
+  .footer-legal{justify-content:center}
+
+  /* CTA SECTIONS */
+  .about-cta,.cta-sec{padding:60px 5%}
+  .cta-teal{padding:2rem 1.5rem}
+
+  /* HERO SPLIT */
+  .hero-split,.about-hero-split{min-height:auto}
+  .hs-btns,.ah-actions{flex-direction:column}
+  .hs-btns a,.ah-actions a{text-align:center;justify-content:center}
+
+  /* LEGAL */
+  .legal-hero{padding:36px 5% 32px}
+  .legal-section h2{font-size:.95rem}
+
+  /* SERVICES HERO CHIPS */
+  .hero-title-row{flex-direction:column;gap:.875rem}
+  .svc-hero-chips{gap:6px}
+  .chip{font-size:.7rem;padding:.3rem .75rem}
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (max 380px)
+   ════════════════════════════════════════ */
+@media(max-width:380px){
+  .hero h1{font-size:1.7rem}
+  .nav-cta{display:none}
+  .hsi-val{font-size:.68rem}
+  section{padding:60px 5%}
+}
+
+
+/* ── HAMBURGER MENU ── */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:4px;
+  background:none;
+  border:none;
+  z-index:300;
+}
+.hamburger span{
+  display:block;
+  width:24px;height:2px;
+  background:var(--t1);
+  border-radius:2px;
+  transition:transform .3s,opacity .3s;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:68px;left:0;right:0;
+  background:rgba(250,249,247,.98);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b1);
+  padding:1.5rem 5%;
+  z-index:199;
+  flex-direction:column;
+  gap:.25rem;
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  color:var(--t2);text-decoration:none;
+  font-size:1rem;font-weight:500;
+  padding:.75rem 0;
+  border-bottom:1px solid var(--b1);
+  transition:color .2s;
+}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover,.mobile-menu a.active{color:var(--teal)}
+.mobile-menu .mob-cta{
+  margin-top:.75rem;
+  background:var(--teal);color:#fff;
+  text-align:center;border-radius:50px;
+  padding:.85rem;font-weight:700;
+  border-bottom:none!important;
+}
+@media(max-width:960px){
+  .hamburger{display:flex}
+}
+
 </style>
 </head>
 <body>
@@ -228,7 +470,20 @@ footer{background:var(--foot);padding:5rem 5% 2.5rem}
     <li><a href="/stridecare-book.html" >Book</a></li>
   </ul>
   <a href="/stridecare-book.html" class="nav-cta">Book Appointment</a>
+
+  <!-- Mobile menu -->
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/index.html">Home</a>
+  <a href="/stridecare-about.html">About Us</a>
+  <a href="/stridecare-services.html">Services</a>
+  <a href="/stridecare-approach.html">Our Approach</a>
+  <a href="/index.html#location">Location</a>
+  <a href="/stridecare-book.html" class="mob-cta">Book Appointment</a>
+</div>
 
 <!-- HERO SPLIT -->
 <div class="hero-split">
@@ -383,5 +638,23 @@ footer{background:var(--foot);padding:5rem 5% 2.5rem}
   </div>
 </footer>
 
+<script>
+  // Hamburger menu
+  var ham = document.getElementById('hamburger');
+  var mob = document.getElementById('mobileMenu');
+  if(ham && mob){
+    ham.addEventListener('click', function(){
+      ham.classList.toggle('open');
+      mob.classList.toggle('open');
+    });
+    // Close on link click
+    mob.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        ham.classList.remove('open');
+        mob.classList.remove('open');
+      });
+    });
+  }
+</script>
 </body>
 </html>
