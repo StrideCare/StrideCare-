@@ -298,7 +298,7 @@ const WEB3FORMS_KEY = "7f958967-a9f6-48ea-bdd2-7fb038241bde";
 const FORM_URL      = "https://stridecare.au/stride-intake.html";
 
 const QX_CATEGORIES = [
-  { label:"General", items:["phq9","gad7","tsk","fabq"] },
+  { label:"General", items:["ompq","phq9","gad7","tsk","fabq"] },
   { label:"Back Pain Screening", items:["startback","ompsq10"] },
   { label:"Spine & Head", items:["ndi","hdi"] },
   { label:"Upper Limb", items:["quickdash","spadi","prwe","uefi"] },
@@ -311,6 +311,36 @@ const QX_CATEGORIES = [
 const QUESTIONNAIRES = {
 
   // ─── GENERAL ────────────────────────────────────
+  ompq: {
+    label:"Örebro MSK Pain Questionnaire", abbr:"OMPQ",
+    name:"Örebro Musculoskeletal Pain Questionnaire (OMPQ)",
+    intro:"The following questions are about you and your current problem. Please answer all of them by selecting the option that best describes your situation.",
+    questions:[
+      {text:"1. How long have you had your current pain problem?",opts:["1 – 0–1 week","2 – 1–2 weeks","3 – 3–4 weeks","4 – 4–5 weeks","5 – 6–8 weeks","6 – 9–11 weeks","7 – 3–6 months","8 – 6–9 months","9 – 9–12 months","10 – Over 1 year"]},
+      {text:"2. How often did you have pain before this latest episode?",opts:["Never had pain before","Occasional mild pain","Occasional severe pain","Frequent mild pain","Frequent severe pain","Pain is constant"]},
+      {text:"3. How would you rate the pain you have had during the past week? (0 = no pain, 10 = pain as bad as it could be)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"4. In the past 3 months, on average, how bad was your pain? (0 = no pain, 10 = pain as bad as it could be)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"5. How often have you experienced pain episodes, on average, during the past 3 months?",opts:["Never","About once per month","About 2–3 times per month","About once per week","About 2–3 times per week","About every day","Constantly"]},
+      {text:"6. Based on all the things you do to cope, on an average day, how much are you able to decrease it? (0 = can't decrease at all, 10 = can decrease it completely)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"7. I can do light work for an hour (0 = can't do it because of pain, 10 = can do it without pain)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"8. I can walk for an hour (0 = can't do it because of pain, 10 = can do it without pain)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"9. I can do ordinary household chores (0 = can't do it because of pain, 10 = can do it without pain)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"10. I can go shopping (0 = can't do it because of pain, 10 = can do it without pain)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"11. I can sleep at night (0 = can't because of pain, 10 = no problem)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"12. The pain is my own fault (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"13. My pain is severe and will never get better (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"14. In general, I am fearful of being physically active or exercising (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"15. An increase in pain is an indication that I should stop what I am doing until the pain decreases (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"16. I should not do my normal work with my present pain (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"17. I cannot do the things I normally do until my pain is treated (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"18. How worried are you about your pain? (0 = not at all, 10 = extremely worried)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"19. In your estimation, what are the chances you will be working in 6 months? (0 = no chance, 10 = very large chance)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"20. How physically strenuous is your work? (0 = not at all, 10 = extremely strenuous)",opts:["0","1","2","3","4","5","6","7","8","9","10","Not currently working"]},
+      {text:"21. How tense or anxious have you felt in the past week? (0 = not at all, 10 = extremely)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"22. How much have you been bothered by feeling down, depressed, or hopeless over the past week? (0 = not at all, 10 = extremely)",opts:["0","1","2","3","4","5","6","7","8","9","10"]}
+    ]
+  },
+
   phq9: {
     label:"PHQ-9 (Depression)", abbr:"PHQ-9",
     name:"Patient Health Questionnaire – 9 (PHQ-9)",
