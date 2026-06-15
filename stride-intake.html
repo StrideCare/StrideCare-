@@ -874,7 +874,7 @@ function checkPin(){
     buildAdminPanel();
     showScreen('screen-admin');
   } else if(val===PATIENT_CODE.toLowerCase()){
-    selectedQx = Object.keys(QUESTIONNAIRES);
+    // Don't preload all questionnaires - buildPatientForm reads from URL
     buildPatientForm();
     showScreen('screen-form');
   } else {
@@ -924,13 +924,15 @@ function generateEmail(){
   const checked = Array.from(document.querySelectorAll('#qx-panel input:checked')).map(cb=>cb.value);
   if(checked.length===0) return alert('Please select at least one questionnaire.');
   const qxLines = checked.map(k=>`• ${QUESTIONNAIRES[k].label} (${QUESTIONNAIRES[k].abbr})`).join('\n');
+  // Build patient-specific URL with selected questionnaires encoded
+  const patientUrl = `${FORM_URL}?q=${checked.join(',')}`;
   const subject = encodeURIComponent(`Stride Care — Patient form to complete`);
   const body = encodeURIComponent(
 `Hi ${fn},
 
 Your physiotherapist at Stride Care has sent you a form to complete.
 
-Link: ${FORM_URL}
+Link: ${patientUrl}
 Access code: ${PATIENT_CODE}
 
 The form includes the following questionnaire${checked.length>1?'s':''}:
@@ -944,8 +946,22 @@ If you have any questions, please reply to this email.`);
 }
 
 function buildPatientForm(){
-  const stored = sessionStorage.getItem('sc_qx');
-  if(stored) selectedQx = JSON.parse(stored);
+  // Read questionnaire selection from URL (?q=ompq,phq9,...)
+  const urlParams = new URLSearchParams(window.location.search);
+  const qParam = urlParams.get('q');
+  if(qParam){
+    selectedQx = qParam.split(',').filter(k => QUESTIONNAIRES[k]);
+  } else {
+    // Fallback: check sessionStorage (for when admin is testing)
+    const stored = sessionStorage.getItem('sc_qx');
+    if(stored) selectedQx = JSON.parse(stored).filter(k => QUESTIONNAIRES[k]);
+  }
+  // Safety net: if still no selection, default to a minimal set, not everything
+  if(!selectedQx || selectedQx.length === 0){
+    selectedQx = [];
+    alert('No questionnaires were specified in the link. Please contact your physiotherapist.');
+    return;
+  }
   patientStepOrder = ['details','pain',...selectedQx,'consent'];
   patientStepIndex = 0;
 
