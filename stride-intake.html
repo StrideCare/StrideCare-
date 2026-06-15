@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stride Care — Patient Intake</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal:#5aada8; --teal-dark:#3d8a85; --sage-light:#e8f0eb;
+  --warm-bg:#f8f6f3; --white:#ffffff; --text:#1a2332;
+  --text-muted:#6b7a8d; --border:#dde3ea; --error:#c0392b;
+  --radius:10px; --shadow:0 2px 16px rgba(26,35,50,0.07);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--warm-bg);color:var(--text);min-height:100vh;padding-bottom:60px;}
+
+/* Header */
+.header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:14px;}
+.header-text h1{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--teal-dark);}
+.header-text p{font-size:0.7rem;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;}
+
+/* Screens */
+.screen{display:none;} .screen.active{display:block;}
+
+/* PIN */
+.pin-wrap{max-width:400px;margin:70px auto 0;padding:0 20px;text-align:center;}
+.lock-icon{width:52px;height:52px;background:var(--sage-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.pin-wrap h2{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--teal-dark);margin-bottom:8px;}
+.pin-wrap p{font-size:0.86rem;color:var(--text-muted);margin-bottom:26px;line-height:1.6;}
+.pin-input{width:100%;padding:13px 18px;border:2px solid var(--border);border-radius:var(--radius);font-size:1.05rem;letter-spacing:0.12em;text-align:center;outline:none;transition:border-color 0.2s;font-family:'Plus Jakarta Sans',sans-serif;}
+.pin-input:focus{border-color:var(--teal);}
+.pin-error{color:var(--error);font-size:0.81rem;margin-top:8px;display:none;}
+.btn-primary{display:block;width:100%;margin-top:14px;padding:13px;background:var(--teal);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.93rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.btn-primary:hover{background:var(--teal-dark);}
+
+/* Admin */
+.admin-wrap{max-width:680px;margin:0 auto;padding:28px 20px 0;}
+.admin-header{background:var(--teal-dark);color:white;border-radius:var(--radius) var(--radius) 0 0;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;}
+.admin-header h2{font-family:'Playfair Display',serif;font-size:1.1rem;}
+.admin-header span{font-size:0.75rem;opacity:0.75;letter-spacing:0.04em;text-transform:uppercase;}
+.admin-body{background:var(--white);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:24px 22px;box-shadow:var(--shadow);margin-bottom:20px;}
+
+/* Fields */
+.field{margin-bottom:16px;} .field:last-child{margin-bottom:0;}
+.field-label{display:block;font-size:0.83rem;font-weight:600;color:var(--text);margin-bottom:6px;}
+.hint{font-weight:400;font-size:0.76rem;color:var(--text-muted);display:block;margin-top:2px;}
+input[type="text"],input[type="date"],input[type="email"],input[type="tel"],select,textarea{
+  width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:8px;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.86rem;color:var(--text);background:white;outline:none;transition:border-color 0.2s;}
+input:focus,select:focus,textarea:focus{border-color:var(--teal);}
+textarea{resize:vertical;min-height:70px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:500px){.field-row{grid-template-columns:1fr;}}
+
+/* Questionnaire category grid */
+.qx-category{margin-bottom:20px;}
+.qx-cat-label{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--sage-light);}
+.qx-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:480px){.qx-grid{grid-template-columns:1fr;}}
+.qx-tile{border:1.5px solid var(--border);border-radius:8px;padding:10px 13px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:10px;user-select:none;}
+.qx-tile:hover{border-color:var(--teal);background:var(--sage-light);}
+.qx-tile.selected{border-color:var(--teal);background:var(--sage-light);}
+.qx-tile input[type="checkbox"]{accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;}
+.qx-tile-text strong{display:block;font-size:0.82rem;font-weight:600;color:var(--text);}
+.qx-tile-text span{font-size:0.71rem;color:var(--text-muted);}
+
+.section-title{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--sage-light);}
+.btn-generate{width:100%;margin-top:20px;padding:14px;background:var(--teal);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-generate:hover{background:var(--teal-dark);}
+.divider{text-align:center;color:var(--text-muted);font-size:0.75rem;margin:20px 0 0;letter-spacing:0.04em;text-transform:uppercase;}
+.btn-logout{display:block;margin:8px auto 0;font-size:0.78rem;color:var(--text-muted);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:'Plus Jakarta Sans',sans-serif;}
+.btn-logout:hover{color:var(--teal-dark);}
+
+/* Patient form */
+.form-wrap{max-width:680px;margin:0 auto;padding:28px 20px 0;}
+.form-intro{background:var(--white);border-radius:var(--radius);padding:20px 24px;margin-bottom:16px;box-shadow:var(--shadow);}
+.form-intro h2{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--teal-dark);margin-bottom:5px;}
+.form-intro p{font-size:0.84rem;color:var(--text-muted);line-height:1.6;}
+.section-card{background:var(--white);border-radius:var(--radius);padding:22px 24px;margin-bottom:14px;box-shadow:var(--shadow);}
+
+/* Radio / check */
+.radio-group,.check-group{display:flex;flex-direction:column;gap:7px;}
+.radio-group.inline,.check-group.inline{flex-direction:row;flex-wrap:wrap;gap:8px;}
+.radio-opt,.check-opt{display:flex;align-items:center;gap:9px;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color 0.2s,background 0.2s;font-size:0.84rem;user-select:none;}
+.radio-opt:hover,.check-opt:hover{border-color:var(--teal);background:var(--sage-light);}
+.radio-opt input,.check-opt input{accent-color:var(--teal);width:15px;height:15px;}
+.radio-opt.selected,.check-opt.selected{border-color:var(--teal);background:var(--sage-light);}
+
+/* Pain scale */
+.scale-wrap{display:flex;gap:5px;flex-wrap:wrap;}
+.scale-btn{width:40px;height:40px;border:1.5px solid var(--border);border-radius:8px;background:white;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);}
+.scale-btn:hover{border-color:var(--teal);background:var(--sage-light);}
+.scale-btn.selected{background:var(--teal);color:white;border-color:var(--teal);}
+.scale-labels{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-top:5px;}
+
+/* Outcome measure */
+.om-header{background:var(--sage-light);border-radius:8px;padding:11px 15px;margin-bottom:14px;font-size:0.81rem;color:var(--teal-dark);font-weight:600;}
+.om-question{margin-bottom:18px;}
+.om-question p{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:9px;line-height:1.5;}
+.om-options{display:flex;flex-direction:column;gap:6px;}
+.om-opt{display:flex;align-items:flex-start;gap:9px;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color 0.2s,background 0.2s;font-size:0.82rem;line-height:1.45;user-select:none;}
+.om-opt:hover{border-color:var(--teal);background:var(--sage-light);}
+.om-opt.selected{border-color:var(--teal);background:var(--sage-light);}
+.om-opt input{accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:1px;}
+
+/* Progress */
+.progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:10px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--teal);border-radius:2px;transition:width 0.4s ease;}
+.step-label{font-size:0.73rem;color:var(--text-muted);margin-bottom:18px;font-weight:500;}
+
+/* Nav */
+.nav-btns{display:flex;gap:10px;margin-top:20px;}
+.btn-back{flex:0 0 auto;padding:12px 20px;background:white;color:var(--text);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;transition:border-color 0.2s;}
+.btn-back:hover{border-color:var(--teal);}
+.btn-next{flex:1;padding:12px;background:var(--teal);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.btn-next:hover{background:var(--teal-dark);}
+.btn-submit{flex:1;padding:14px;background:var(--teal-dark);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.btn-submit:hover{background:#2e6b67;}
+.btn-submit:disabled{opacity:0.6;cursor:not-allowed;}
+
+/* Success */
+.success-wrap{max-width:460px;margin:80px auto 0;padding:0 20px;text-align:center;}
+.success-icon{width:60px;height:60px;background:var(--sage-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.success-wrap h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--teal-dark);margin-bottom:10px;}
+.success-wrap p{font-size:0.88rem;color:var(--text-muted);line-height:1.65;}
+.hidden{display:none!important;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+    <circle cx="30" cy="30" r="30" fill="#5aada8" opacity="0.12"/>
+    <path d="M18 38 Q24 20 30 28 Q36 36 42 18" stroke="#5aada8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="30" cy="18" r="5" fill="#3d8a85"/>
+  </svg>
+  <div class="header-text">
+    <h1>Stride Care Physiotherapy</h1>
+    <p>Patient Intake</p>
+  </div>
+</div>
+
+<!-- SCREEN: PIN -->
+<div id="screen-pin" class="screen active">
+  <div class="pin-wrap">
+    <div class="lock-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5aada8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <h2>Welcome</h2>
+    <p>Enter the access code from your physiotherapist to continue.</p>
+    <input type="text" class="pin-input" id="pin-input" placeholder="Enter access code" autocomplete="off" spellcheck="false">
+    <div class="pin-error" id="pin-error">Incorrect code. Please check the message from your physiotherapist.</div>
+    <button class="btn-primary" onclick="checkPin()">Continue →</button>
+  </div>
+</div>
+
+<!-- SCREEN: ADMIN -->
+<div id="screen-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <h2>Clinician Panel</h2>
+      <span>Stride Care — Internal Use</span>
+    </div>
+    <div class="admin-body">
+      <div class="section-title">Patient Details</div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">First Name <span style="color:var(--teal)">*</span></label>
+          <input type="text" id="a-firstname" placeholder="e.g. Sarah">
+        </div>
+        <div class="field">
+          <label class="field-label">Last Name <span style="color:var(--teal)">*</span></label>
+          <input type="text" id="a-lastname" placeholder="e.g. Johnson">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Patient Email <span style="color:var(--teal)">*</span></label>
+        <input type="email" id="a-email" placeholder="patient@email.com">
+      </div>
+
+      <div class="section-title" style="margin-top:22px;">Select Questionnaires</div>
+      <div id="qx-panel"><!-- built by JS --></div>
+
+      <div class="field" style="margin-top:18px;">
+        <label class="field-label">Additional note <span class="hint">Optional — appears in the email</span></label>
+        <textarea id="a-note" placeholder="e.g. Please complete this before your Thursday appointment."></textarea>
+      </div>
+      <button class="btn-generate" onclick="generateEmail()">Generate & Open Email Draft →</button>
+    </div>
+    <div class="divider">─────── or ───────</div>
+    <button class="btn-logout" onclick="logout()">Log out</button>
+  </div>
+</div>
+
+<!-- SCREEN: PATIENT FORM -->
+<div id="screen-form" class="screen">
+  <div class="form-wrap">
+    <div class="form-intro">
+      <h2>Stride Care — Patient Form</h2>
+      <p>Your physiotherapist has sent you this form to complete. It should take around 5–10 minutes. Your responses will be sent directly to the Stride Care team.</p>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="step-label" id="step-label"></div>
+
+    <!-- Step: Details -->
+    <div id="pstep-details" class="pstep hidden">
+      <div class="section-card">
+        <div class="section-title">Your Details</div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">First Name <span style="color:var(--teal)">*</span></label>
+            <input type="text" id="f-firstname" placeholder="e.g. Sarah">
+          </div>
+          <div class="field">
+            <label class="field-label">Last Name <span style="color:var(--teal)">*</span></label>
+            <input type="text" id="f-lastname" placeholder="e.g. Johnson">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label">Date of Birth <span style="color:var(--teal)">*</span></label>
+            <input type="date" id="f-dob">
+          </div>
+          <div class="field">
+            <label class="field-label">Phone Number <span style="color:var(--teal)">*</span></label>
+            <input type="tel" id="f-phone" placeholder="04XX XXX XXX">
+          </div>
+        </div>
+      </div>
+      <div class="nav-btns">
+        <button class="btn-next" onclick="patientNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step: Pain -->
+    <div id="pstep-pain" class="pstep hidden">
+      <div class="section-card">
+        <div class="section-title">Current Pain & Function</div>
+        <div class="field">
+          <label class="field-label">Pain level — at rest <span style="color:var(--teal)">*</span>
+            <span class="hint">0 = no pain, 10 = worst imaginable pain</span>
+          </label>
+          <div class="scale-wrap" id="scale-rest"></div>
+          <div class="scale-labels"><span>No pain</span><span>Worst pain</span></div>
+          <input type="hidden" id="f-pain-rest">
+        </div>
+        <div class="field" style="margin-top:18px;">
+          <label class="field-label">Pain level — with activity <span style="color:var(--teal)">*</span>
+            <span class="hint">0 = no pain, 10 = worst imaginable pain</span>
+          </label>
+          <div class="scale-wrap" id="scale-activity"></div>
+          <div class="scale-labels"><span>No pain</span><span>Worst pain</span></div>
+          <input type="hidden" id="f-pain-activity">
+        </div>
+        <div class="field" style="margin-top:18px;">
+          <label class="field-label">Overall function
+            <span class="hint">0 = completely unable to do usual activities, 10 = back to normal</span>
+          </label>
+          <div class="scale-wrap" id="scale-function"></div>
+          <div class="scale-labels"><span>Completely unable</span><span>Fully able</span></div>
+          <input type="hidden" id="f-function">
+        </div>
+        <div class="field" style="margin-top:18px;">
+          <label class="field-label">How long have you had this problem? <span style="color:var(--teal)">*</span></label>
+          <div class="radio-group inline">
+            <label class="radio-opt"><input type="radio" name="duration" value="Less than 2 weeks"> &lt;2 weeks</label>
+            <label class="radio-opt"><input type="radio" name="duration" value="2–6 weeks"> 2–6 weeks</label>
+            <label class="radio-opt"><input type="radio" name="duration" value="6–12 weeks"> 6–12 weeks</label>
+            <label class="radio-opt"><input type="radio" name="duration" value="3–6 months"> 3–6 months</label>
+            <label class="radio-opt"><input type="radio" name="duration" value="6–12 months"> 6–12 months</label>
+            <label class="radio-opt"><input type="radio" name="duration" value="Over 12 months"> Over 12 months</label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">What makes your symptoms better?</label>
+          <textarea id="f-better" placeholder="e.g. Rest, heat, walking, lying down..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">What makes your symptoms worse?</label>
+          <textarea id="f-worse" placeholder="e.g. Sitting, bending, lifting, first thing in the morning..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">Previous treatment for this condition</label>
+          <div class="check-group">
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Physiotherapy"> Physiotherapy</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Chiropractic / osteopathy"> Chiropractic / osteopathy</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Surgery"> Surgery</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Injections / cortisone"> Injections / cortisone</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Medication / pain relief"> Medication / pain relief</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="None"> None</label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Any relevant medical history we should know about?</label>
+          <textarea id="f-pmhx" placeholder="e.g. Diabetes, osteoporosis, previous surgeries..." style="min-height:60px;"></textarea>
+        </div>
+      </div>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="patientBack()">← Back</button>
+        <button class="btn-next" onclick="patientNext()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Dynamic questionnaire steps injected here -->
+    <div id="pstep-qx-container"></div>
+
+    <!-- Step: Consent -->
+    <div id="pstep-consent" class="pstep hidden">
+      <div class="section-card">
+        <div class="section-title">Declaration</div>
+        <div class="field">
+          <label class="check-opt" style="border:none;padding:0;gap:12px;align-items:flex-start;">
+            <input type="checkbox" id="f-consent" style="width:17px;height:17px;accent-color:#5aada8;flex-shrink:0;margin-top:2px;">
+            <span style="font-size:0.83rem;line-height:1.6;color:var(--text-muted);">I confirm the information I have provided is accurate and complete to the best of my knowledge. I consent to this information being used by Stride Care Physiotherapy for the purpose of my clinical assessment and treatment.</span>
+          </label>
+        </div>
+      </div>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="patientBack()">← Back</button>
+        <button class="btn-submit" id="btn-submit" onclick="submitForm()">Submit →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: SUCCESS -->
+<div id="screen-success" class="screen">
+  <div class="success-wrap">
+    <div class="success-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3d8a85" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Thank you!</h2>
+    <p>Your form has been received by the Stride Care team.</p>
+    <p style="margin-top:14px;">Questions? Contact us on <strong>0403 623 622</strong> or <strong>stridecare@outlook.com</strong></p>
+  </div>
+</div>
+
+<script>
+// ─── CONFIG ───────────────────────────────────────────
+const ADMIN_CODE    = "stride-admin";
+const PATIENT_CODE  = "stride25";
+const WEB3FORMS_KEY = "7f958967-a9f6-48ea-bdd2-7fb038241bde";
+const FORM_URL      = "https://stridecare.au/intake";
+
+// ─── QUESTIONNAIRE DEFINITIONS ────────────────────────
+const QX_CATEGORIES = [
+  {
+    label: "General",
+    items: ["ompq","phq9","gad7","pcs","tsk","fabq"]
+  },
+  {
+    label: "Spine & Head",
+    items: ["odi","ndi"]
+  },
+  {
+    label: "Upper Limb",
+    items: ["dash","quickdash","visap"]
+  },
+  {
+    label: "Lower Limb",
+    items: ["koos","hoos","faam","visaa","oxford_knee","oxford_hip"]
+  }
+];
+
+const QUESTIONNAIRES = {
+
+  // ── GENERAL ──────────────────────────────────────────
+
+  ompq: {
+    label:"Örebro MSK Pain Questionnaire", abbr:"OMPQ",
+    name:"Örebro Musculoskeletal Pain Questionnaire (OMPQ)",
+    intro:"The following questions are about you and your current problem. Please answer all of them by selecting the option that best describes your situation.",
+    questions:[
+      {text:"1. How long have you had your current pain problem?",
+       opts:["0 – 1 week","1–2 weeks","3–4 weeks","4–5 weeks","6–8 weeks","9–11 weeks","3–6 months","6–9 months","9–12 months","Over 1 year"]},
+      {text:"2. How often did you have pain before this latest episode?",
+       opts:["Never had pain before","Occasional mild pain","Occasional severe pain","Frequent mild pain","Frequent severe pain","Pain is constant"]},
+      {text:"3. How would you rate the pain you have had during the past week? (0 = No pain, 10 = Pain as bad as it could be)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"4. In the past 3 months, on average, how bad was your pain? (0 = No pain, 10 = Pain as bad as it could be)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"5. How often would you say that you have experienced pain episodes, on average, during the past 3 months?",
+       opts:["Never","About once per month","About 2–3 times per month","About once per week","About 2–3 times per week","About every day","Constantly"]},
+      {text:"6. Based on all the things you do to cope, or deal with your pain, on an average day, how much are you able to decrease it? (0 = Can't decrease at all, 10 = Can decrease it completely)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"7. I can do light work for an hour (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"8. I can walk for an hour (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"9. I can do ordinary household chores (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"10. I can go shopping (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"11. I can sleep at night (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"12. The pain is my own fault. (0 = Completely disagree, 10 = Completely agree)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"13. My pain is severe and will never get better. (0 = Completely disagree, 10 = Completely agree)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"14. In general, I am fearful of being physically active or exercising. (0 = Completely disagree, 10 = Completely agree)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"15. An increase in pain is an indication that I should stop what I am doing until the pain decreases. (0 = Completely disagree, 10 = Completely agree)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"16. I should not do my normal work with my present pain. (0 = Completely disagree, 10 = Completely agree)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"17. I cannot do the things I normally do until my pain is treated. (0 = Completely disagree, 10 = Completely agree)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"18. How worried are you about your pain? (0 = Not at all worried, 10 = Extremely worried)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"19. In your estimation, what are the chances that you will be able to work in 6 months? (0 = No chance, 10 = Very large chance)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"20. If you take into account your work pace, your working posture, and other conditions in your workplace, how do you rate your own work? (0 = My work is not physically strenuous at all, 10 = My work is extremely physically strenuous)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10","Not currently working"]},
+      {text:"21. How tense or anxious have you felt in the past week? (0 = Not at all tense/anxious, 10 = Extremely tense/anxious)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"22. How much have you been bothered by feeling down, depressed, or hopeless over the past week? (0 = Not at all, 10 = Extremely)",
+       opts:["0","1","2","3","4","5","6","7","8","9","10"]}
+    ]
+  },
+
+  phq9: {
+    label:"PHQ-9 (Depression)", abbr:"PHQ-9",
+    name:"Patient Health Questionnaire – 9 (PHQ-9)",
+    intro:"Over the last 2 weeks, how often have you been bothered by any of the following problems?",
+    questions:[
+      {text:"1. Little interest or pleasure in doing things",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"2. Feeling down, depressed, or hopeless",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"3. Trouble falling or staying asleep, or sleeping too much",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"4. Feeling tired or having little energy",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"5. Poor appetite or overeating",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"7. Trouble concentrating on things, such as reading the newspaper or watching television",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"8. Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"9. Thoughts that you would be better off dead or of hurting yourself in some way",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"10. If you checked off any problems above, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",opts:["Not difficult at all","Somewhat difficult","Very difficult","Extremely difficult"]}
+    ]
+  },
+
+  gad7: {
+    label:"GAD-7 (Anxiety)", abbr:"GAD-7",
+    name:"Generalised Anxiety Disorder – 7 (GAD-7)",
+    intro:"Over the last 2 weeks, how often have you been bothered by the following problems?",
+    questions:[
+      {text:"1. Feeling nervous, anxious, or on edge",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"2. Not being able to stop or control worrying",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"3. Worrying too much about different things",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"4. Trouble relaxing",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"5. Being so restless that it is hard to sit still",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"6. Becoming easily annoyed or irritable",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"7. Feeling afraid as if something awful might happen",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"8. If you checked off any problems above, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",opts:["Not difficult at all","Somewhat difficult","Very difficult","Extremely difficult"]}
+    ]
+  },
+
+  pcs: {
+    label:"Pain Catastrophising Scale", abbr:"PCS",
+    name:"Pain Catastrophising Scale (PCS)",
+    intro:"Everyone experiences painful situations at some point in their lives. When you are in a painful situation, how often do you have the following thoughts or feelings? (0 = Not at all, 4 = All the time)",
+    questions:[
+      {text:"1. I worry all the time about whether the pain will end.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"2. I feel I can't go on.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"3. It's terrible and I think it's never going to get any better.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"4. It's awful and I feel that it overwhelms me.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"5. I feel I can't stand it anymore.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"6. I become afraid that the pain will get worse.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"7. I keep thinking of other painful events.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"8. I anxiously want the pain to go away.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"9. I can't seem to keep it out of my mind.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"10. I keep thinking about how much it hurts.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"11. I keep thinking about how badly I want the pain to stop.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"12. There's nothing I can do to reduce the intensity of the pain.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
+      {text:"13. I wonder whether something serious may happen.",opts:["0 – Not at all","1","2","3","4 – All the time"]}
+    ]
+  },
+
+  tsk: {
+    label:"Tampa Scale of Kinesiophobia", abbr:"TSK-11",
+    name:"Tampa Scale of Kinesiophobia (TSK-11)",
+    intro:"Below are some of the things other patients have told us about their pain. For each statement, please indicate the extent to which you agree or disagree by selecting one of the options.",
+    questions:[
+      {text:"1. I'm afraid that I might injure myself if I exercise.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"2. If I were to try to overcome it, my pain would increase.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"3. My body is telling me I have something dangerously wrong.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"4. My pain would probably be relieved if I were to exercise.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"5. People aren't taking my medical condition seriously enough.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"6. My accident has put my body at risk for the rest of my life.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"7. Pain always means I have injured my body.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"8. I am afraid that I might injure myself accidentally.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"9. The safest thing I can do when I'm in pain is just be careful and not make any unnecessary movements.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"10. I wouldn't have this much pain if there weren't something potentially dangerous going on in my body.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"11. Although my condition is painful, I would be better off if I were physically active.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]}
+    ]
+  },
+
+  fabq: {
+    label:"Fear Avoidance Beliefs (FABQ)", abbr:"FABQ",
+    name:"Fear Avoidance Beliefs Questionnaire (FABQ)",
+    intro:"Here are some of the things which other patients have told us about their pain. For each statement, please circle any number from 0 to 6 to say how much physical activities such as bending, lifting, walking or driving affect or would affect your back pain.",
+    questions:[
+      {text:"1. My pain was caused by physical activity.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"2. Physical activity makes my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"3. Physical activity might harm my back.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"4. I should not do physical activities which (might) make my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"5. I cannot do physical activities which (might) make my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"6. My pain was caused by my work or by an accident at work.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"7. My work aggravated or caused my pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"8. I have a claim for compensation for my pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"9. My work is too heavy for me.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"10. My work makes or would make my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"11. My work might harm my back.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"12. I should not do my normal work with my present pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"13. I cannot do my normal work with my present pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"14. I cannot do my normal work until my pain is treated.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"15. I do not think that I will be back to my normal work within 3 months.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
+      {text:"16. I do not think that I will ever be able to go back to that work.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]}
+    ]
+  },
+
+  // ── SPINE & HEAD ─────────────────────────────────────
+
+  odi: {
+    label:"Oswestry Disability Index", abbr:"ODI",
+    name:"Oswestry Disability Index (ODI)",
+    intro:"The following questions relate to how your back pain affects your ability to manage everyday life. Please select ONE statement per section that most closely describes your situation today.",
+    questions:[
+      {text:"1. Pain Intensity",opts:["I can tolerate the pain I have without using pain killers","The pain is bad but I manage without pain killers","Pain killers give complete relief from pain","Pain killers give moderate relief from pain","Pain killers give very little relief from pain","Pain killers have no effect on the pain and I do not use them"]},
+      {text:"2. Personal Care (washing, dressing)",opts:["I can look after myself normally without causing extra pain","I can look after myself normally but it causes extra pain","It is painful to look after myself and I am slow and careful","I need some help but manage most of my personal care","I need help every day in most aspects of self care","I do not get dressed, I wash with difficulty and stay in bed"]},
+      {text:"3. Lifting",opts:["I can lift heavy weights without extra pain","I can lift heavy weights but it gives extra pain","Pain prevents me lifting heavy weights off the floor, but I can manage if they are conveniently positioned","Pain prevents me lifting heavy weights, but I can manage light to medium weights if conveniently positioned","I can only lift very light weights","I cannot lift or carry anything at all"]},
+      {text:"4. Walking",opts:["Pain does not prevent me walking any distance","Pain prevents me walking more than 1 mile","Pain prevents me walking more than 1/2 mile","Pain prevents me walking more than 100 yards","I can only walk using a stick or crutches","I am in bed most of the time and have to crawl to the toilet"]},
+      {text:"5. Sitting",opts:["I can sit in any chair as long as I like","I can only sit in my favourite chair as long as I like","Pain prevents me sitting for more than 1 hour","Pain prevents me sitting for more than half an hour","Pain prevents me sitting for more than 10 minutes","Pain prevents me sitting at all"]},
+      {text:"6. Standing",opts:["I can stand as long as I want without extra pain","I have extra pain when standing but it does not increase with time","Pain prevents me standing for more than 1 hour","Pain prevents me standing for more than 30 minutes","Pain prevents me standing for more than 10 minutes","Pain prevents me standing at all"]},
+      {text:"7. Sleeping",opts:["My sleep is never disturbed by pain","My sleep is occasionally disturbed by pain","Because of pain I have less than 6 hours sleep","Because of pain I have less than 4 hours sleep","Because of pain I have less than 2 hours sleep","Pain prevents me sleeping at all"]},
+      {text:"8. Sex life (if applicable)",opts:["My sex life is normal and causes no extra pain","My sex life is normal but causes some extra pain","My sex life is nearly normal but is very painful","My sex life is severely restricted by pain","My sex life is nearly absent because of pain","Pain prevents any sex life at all","Not applicable"]},
+      {text:"9. Social life",opts:["My social life is normal and gives me no extra pain","My social life is normal but increases the degree of pain","Pain has no significant effect on my social life apart from limiting my more energetic interests","Pain has restricted my social life and I do not go out as often","Pain has restricted my social life to my home","I have no social life because of pain"]},
+      {text:"10. Travelling",opts:["I can travel anywhere without pain","I can travel anywhere but it gives extra pain","Pain is bad but I manage journeys over two hours","Pain restricts me to journeys of less than one hour","Pain restricts me to short necessary journeys under 30 minutes","Pain prevents me travelling except to receive treatment"]}
+    ]
+  },
+
+  ndi: {
+    label:"Neck Disability Index", abbr:"NDI",
+    name:"Neck Disability Index (NDI)",
+    intro:"This questionnaire helps your physiotherapist understand how your neck pain affects everyday life. Please select ONE statement per section that best describes your current situation.",
+    questions:[
+      {text:"1. Pain Intensity",opts:["I have no pain at the moment","The pain is very mild at the moment","The pain is moderate at the moment","The pain is fairly severe at the moment","The pain is very severe at the moment","The pain is the worst imaginable at the moment"]},
+      {text:"2. Personal Care (washing, dressing)",opts:["I can look after myself normally without causing extra pain","I can look after myself normally but it causes extra pain","It is painful to look after myself and I am slow and careful","I need some help but manage most of my personal care","I need help every day in most aspects of self care","I do not get dressed, I wash with difficulty and stay in bed"]},
+      {text:"3. Lifting",opts:["I can lift heavy weights without extra pain","I can lift heavy weights but it gives extra pain","Pain prevents me lifting heavy weights off the floor, but I can manage if conveniently placed","Pain prevents me lifting heavy weights, but I can manage light to medium weights if conveniently placed","I can only lift very light weights","I cannot lift or carry anything at all"]},
+      {text:"4. Reading",opts:["I can read as much as I want with no pain in my neck","I can read as much as I want with slight pain in my neck","I can read as much as I want with moderate pain in my neck","I cannot read as much as I want because of moderate pain in my neck","I can hardly read at all because of severe pain in my neck","I cannot read at all"]},
+      {text:"5. Headaches",opts:["I have no headaches at all","I have slight headaches which come infrequently","I have moderate headaches which come infrequently","I have moderate headaches which come frequently","I have severe headaches which come frequently","I have headaches almost all the time"]},
+      {text:"6. Concentration",opts:["I can concentrate fully when I want to with no difficulty","I can concentrate fully when I want to with slight difficulty","I have a fair degree of difficulty in concentrating when I want to","I have a lot of difficulty in concentrating when I want to","I have a great deal of difficulty in concentrating when I want to","I cannot concentrate at all"]},
+      {text:"7. Work",opts:["I can do as much work as I want to","I can only do my usual work, but no more","I can do most of my usual work, but no more","I cannot do my usual work","I can hardly do any work at all","I cannot do any work at all"]},
+      {text:"8. Driving",opts:["I can drive my car without any neck pain","I can drive my car as long as I want with slight pain in my neck","I can drive my car as long as I want with moderate pain in my neck","I cannot drive my car as long as I want because of moderate pain in my neck","I can hardly drive at all because of severe pain in my neck","I cannot drive my car at all","I do not drive"]},
+      {text:"9. Sleeping",opts:["I have no trouble sleeping","My sleep is slightly disturbed (less than 1 hr sleepless)","My sleep is mildly disturbed (1–2 hrs sleepless)","My sleep is moderately disturbed (2–3 hrs sleepless)","My sleep is greatly disturbed (3–5 hrs sleepless)","My sleep is completely disturbed (5–7 hrs sleepless)"]},
+      {text:"10. Recreation",opts:["I am able to engage in all my recreational activities with no neck pain","I am able to engage in all my recreational activities with some pain in my neck","I am able to engage in most but not all of my usual recreational activities because of pain","I am able to engage in only a few of my usual recreational activities because of pain","I can hardly engage in any recreational activities because of pain","I cannot engage in any recreational activities at all"]}
+    ]
+  },
+
+  // ── UPPER LIMB ───────────────────────────────────────
+
+  dash: {
+    label:"DASH", abbr:"DASH",
+    name:"DASH — Disabilities of the Arm, Shoulder and Hand",
+    intro:"Please rate your ability to do the following activities in the last week. 1 = No difficulty, 2 = Mild difficulty, 3 = Moderate difficulty, 4 = Severe difficulty, 5 = Unable.",
+    questions:[
+      {text:"Open a tight or new jar",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Write",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Turn a key",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Prepare a meal",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Push open a heavy door",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Place an object on a shelf above your head",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Do heavy household chores (e.g. washing floors, walls)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Garden or do yard work",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Make a bed",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Carry a shopping bag or briefcase",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Carry a heavy object (over 5 kg)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Change a light bulb overhead",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Wash or blow dry your hair",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Wash your back",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Put on a pullover sweater",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Use a knife to cut food",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Recreational activities requiring little effort (e.g. card playing, knitting)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Recreational activities taking some force through your arm/shoulder/hand (e.g. golf, tennis, hammering)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Recreational activities where you move your arm freely (e.g. frisbee, badminton)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Manage transportation (getting from one place to another)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"Sexual activities",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable / Not applicable"]},
+      {text:"To what extent has your arm/shoulder/hand problem interfered with your social activities in the past week?",opts:["1 – Not at all","2 – Slightly","3 – Moderately","4 – Quite a bit","5 – Extremely"]},
+      {text:"Were you limited in your work or daily activities because of your arm/shoulder/hand problem?",opts:["1 – Not limited at all","2 – Slightly limited","3 – Moderately limited","4 – Very limited","5 – Unable"]},
+      {text:"Arm, shoulder or hand pain",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"Arm, shoulder or hand pain when performing specific activities",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"Tingling (pins and needles) in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"Weakness in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"Stiffness in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"Difficulty sleeping due to pain in your arm, shoulder or hand",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – So much difficulty — unable to sleep"]},
+      {text:"I feel less capable, less confident or less useful because of my arm, shoulder or hand problem",opts:["1 – Strongly disagree","2 – Disagree","3 – Neither agree nor disagree","4 – Agree","5 – Strongly agree"]}
+    ]
+  },
+
+  quickdash: {
+    label:"QuickDASH", abbr:"QuickDASH",
+    name:"QuickDASH — Disabilities of the Arm, Shoulder and Hand (Short Form)",
+    intro:"Please rate your ability to do the following activities in the last week. 1 = No difficulty, 2 = Mild difficulty, 3 = Moderate difficulty, 4 = Severe difficulty, 5 = Unable.",
+    questions:[
+      {text:"1. Open a tight or new jar",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"2. Do heavy household chores (e.g. wash walls, floors)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"3. Carry a shopping bag or briefcase",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"4. Wash your back",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"5. Use a knife to cut food",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"6. Recreational activities in which you take some force or impact through your arm, shoulder or hand (e.g. golf, hammering, tennis)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"7. During the past week, to what extent has your arm, shoulder or hand problem interfered with your normal social activities with family, friends, neighbours, or groups?",opts:["1 – Not at all","2 – Slightly","3 – Moderately","4 – Quite a bit","5 – Extremely"]},
+      {text:"8. Were you limited in your work or other regular daily activities as a result of your arm, shoulder or hand problem?",opts:["1 – Not limited at all","2 – Slightly limited","3 – Moderately limited","4 – Very limited","5 – Unable"]},
+      {text:"9. Arm, shoulder or hand pain",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"10. Tingling (pins and needles) in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"11. During the past week, how much difficulty have you had sleeping due to the pain in your arm, shoulder or hand?",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – So much difficulty — unable to sleep"]}
+    ]
+  },
+
+  visap: {
+    label:"VISA-P (Patellar tendinopathy)", abbr:"VISA-P",
+    name:"VISA-P — Victorian Institute of Sport Assessment – Patella",
+    intro:"Please answer all questions. For questions 1–6, circle the number that best represents your pain or function. For questions 7 and 8, follow the specific instructions.",
+    questions:[
+      {text:"1. For how many minutes can you sit pain free?",opts:["0 – 0 min","1","2","3","4","5","6","7","8","9","10 – >100 min"]},
+      {text:"2. Do you have pain walking down stairs with a normal gait cycle?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"3. Do you have pain at the knee with full active knee extension (knee straightening)?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"4. Do you have pain when doing a full weight bearing lunge?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"5. Do you have problems squatting?",opts:["0 – Cannot squat at all","1","2","3","4","5","6","7","8","9","10 – No problems"]},
+      {text:"6. Do you have pain during or immediately after doing 10 single leg hops?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"7. Are you currently undertaking sport or physical activity?",opts:["0 – Not at all","4 – Modified training or competition","7 – Full training or competition but at reduced level","10 – Competing at the same or higher level as when symptoms began"]},
+      {text:"8. Please complete either A, B or C. A: If you have no pain while undertaking sport, for how long can you undertake sport? B: If you have pain while undertaking sport, for how long can you undertake sport? C: If you have pain that stops you from completing sport, how long can you undertake sport before the pain stops you?",opts:["A: 0 – 0 min","A: 7 – 1–5 min","A: 14 – 6–10 min","A: 20 – 11–15 min","A: 30 – >15 min","B: 0 – 0 min","B: 4 – 1–5 min","B: 10 – 6–10 min","B: 14 – 11–15 min","B: 20 – >15 min","C: 0 – 0 min","C: 2 – 1–5 min","C: 5 – 6–10 min","C: 8 – 11–15 min","C: 14 – >15 min"]}
+    ]
+  },
+
+  // ── LOWER LIMB ───────────────────────────────────────
+
+  koos: {
+    label:"KOOS (Knee)", abbr:"KOOS",
+    name:"KOOS — Knee Injury & Osteoarthritis Outcome Score",
+    intro:"The following questions relate to how your knee problem has affected you in the past week. Please select the answer that most closely describes your situation.",
+    questions:[
+      {text:"S1. How severe is your knee stiffness after first waking in the morning?",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P1. How often do you experience knee pain?",opts:["Never","Monthly","Weekly","Daily","Always"]},
+      {text:"P2. Pain — twisting/pivoting on your knee",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P3. Pain — fully straightening your knee",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P4. Pain — fully bending your knee",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P5. Pain — walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P6. Pain — going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P7. Pain — at night while in bed",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A1. Difficulty going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A2. Difficulty rising from sitting",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A3. Difficulty standing",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A4. Difficulty bending to floor / picking up an object",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A5. Difficulty walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A6. Difficulty getting in/out of a car",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A7. Difficulty shopping",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"SP1. How often are you aware of your knee problem?",opts:["Never","Monthly","Weekly","Daily","Constantly"]},
+      {text:"SP2. Have you modified your lifestyle to avoid activities that may worsen your knee?",opts:["Not at all","Mildly","Moderately","Severely","Totally"]},
+      {text:"Q1. Overall, how would you rate your knee?",opts:["Excellent","Good","Fair","Poor","Very poor"]}
+    ]
+  },
+
+  hoos: {
+    label:"HOOS (Hip)", abbr:"HOOS",
+    name:"HOOS — Hip Disability & Osteoarthritis Outcome Score",
+    intro:"The following questions relate to how your hip problem has affected you in the past week. Please select the answer that most closely describes your situation.",
+    questions:[
+      {text:"S1. How severe is your hip stiffness after first waking in the morning?",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P1. How often do you experience hip pain?",opts:["Never","Monthly","Weekly","Daily","Always"]},
+      {text:"P2. Pain — going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P3. Pain — at night while in bed",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P4. Pain — sitting or lying",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P5. Pain — standing upright",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P6. Pain — walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A1. Difficulty going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A2. Difficulty rising from sitting",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A3. Difficulty standing",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A4. Difficulty bending to floor / picking up an object",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A5. Difficulty walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A6. Difficulty getting in/out of a car",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"SP1. How often are you aware of your hip problem?",opts:["Never","Monthly","Weekly","Daily","Constantly"]},
+      {text:"Q1. Overall, how would you rate your hip?",opts:["Excellent","Good","Fair","Poor","Very poor"]}
+    ]
+  },
+
+  faam: {
+    label:"FAAM (Ankle / Foot)", abbr:"FAAM",
+    name:"FAAM — Foot & Ankle Ability Measure",
+    intro:"Due to your foot and ankle, how much difficulty do you have with the following activities in the past week?",
+    questions:[
+      {text:"Standing",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking on even ground",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking on even ground without shoes",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking up hills",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking down hills",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Going up stairs",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Going down stairs",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking on uneven ground",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Stepping up and down curbs",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Squatting",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Coming up on your toes",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking initially (first few steps)",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking 5 minutes or less",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking approximately 10 minutes",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Walking 15 minutes or more",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
+      {text:"Overall, how would you rate your foot/ankle?",opts:["Normal","Nearly normal","Abnormal","Severely abnormal"]}
+    ]
+  },
+
+  visaa: {
+    label:"VISA-A (Achilles tendinopathy)", abbr:"VISA-A",
+    name:"VISA-A — Victorian Institute of Sport Assessment – Achilles",
+    intro:"Please answer all questions. For questions 1–7, select the number that best represents your pain or function. For question 8, follow the specific instructions.",
+    questions:[
+      {text:"1. For how many minutes can you sit pain free?",opts:["0 – 0 min","1","2","3","4","5","6","7","8","9","10 – >100 min"]},
+      {text:"2. Do you have pain walking on flat ground?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"3. Do you have pain walking upstairs?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"4. Do you have pain or stiffness first thing in the morning?",opts:["0 – Severe pain/stiffness","1","2","3","4","5","6","7","8","9","10 – No pain/stiffness"]},
+      {text:"5. Do you have pain when you stand on your toes (calf raise)?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"6. Do you have pain when you do a single leg calf raise?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
+      {text:"7. How many single leg calf raises can you do?",opts:["0 – 0","1 – 1–2","3 – 3–5","5 – 6–9","6 – 10–19","7 – 20+"]},
+      {text:"8. Are you currently undertaking sport or physical activity?",opts:["0 – Not at all","4 – Modified training / competition only","7 – Full training / competition but performance affected","10 – Competing at the same or higher level as before"]}
+    ]
+  },
+
+  oxford_knee: {
+    label:"Oxford Knee Score", abbr:"OKS",
+    name:"Oxford Knee Score (OKS)",
+    intro:"The following questions are about your knee and the problems you have with it. Please answer all questions by selecting the response that best applies to you over the past 4 weeks.",
+    questions:[
+      {text:"1. How would you describe the pain you usually have in your knee?",opts:["None","Very mild","Mild","Moderate","Severe"]},
+      {text:"2. Have you had any trouble with washing and drying yourself (all over) because of your knee?",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
+      {text:"3. Have you had any trouble getting in and out of a car or using public transport because of your knee? (whichever you tend to use)",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
+      {text:"4. For how long have you been able to walk before pain from your knee becomes severe? (with or without a walking stick)",opts:["No pain / more than 30 minutes","16–30 minutes","5–15 minutes","Around the house only","Not at all — pain is severe on walking"]},
+      {text:"5. After a meal (sat at a table), how painful has it been for you to stand up from a chair because of your knee?",opts:["Not at all painful","Slightly painful","Moderately painful","Very painful","Unbearable"]},
+      {text:"6. Have you been limping when walking, because of your knee?",opts:["Rarely / never","Sometimes or just at first","Often, not just at first","Most of the time","All of the time"]},
+      {text:"7. Could you kneel down and get up again afterwards?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
+      {text:"8. Have you been troubled by pain from your knee in bed at night?",opts:["No nights","Only 1 or 2 nights","Some nights","Most nights","Every night"]},
+      {text:"9. How much has pain from your knee interfered with your usual work (including housework)?",opts:["Not at all","A little bit","Moderately","Greatly","Totally"]},
+      {text:"10. Have you felt that your knee might suddenly 'give way' or let you down?",opts:["Rarely / never","Sometimes or just at first","Often, not just at first","Most of the time","All of the time"]},
+      {text:"11. Could you do the household shopping on your own?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
+      {text:"12. Could you walk down one flight of stairs?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]}
+    ]
+  },
+
+  oxford_hip: {
+    label:"Oxford Hip Score", abbr:"OHS",
+    name:"Oxford Hip Score (OHS)",
+    intro:"The following questions are about your hip and the problems you have with it. Please answer all questions by selecting the response that best applies to you over the past 4 weeks.",
+    questions:[
+      {text:"1. How would you describe the pain you usually have in your hip?",opts:["None","Very mild","Mild","Moderate","Severe"]},
+      {text:"2. Have you had any trouble with washing and drying yourself (all over) because of your hip?",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
+      {text:"3. Have you had any trouble getting in and out of a car or using public transport because of your hip?",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
+      {text:"4. Have you been able to put on a pair of socks, stockings, or tights?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
+      {text:"5. Could you do the household shopping on your own?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
+      {text:"6. For how long have you been able to walk before pain from your hip becomes severe?",opts:["No pain / more than 30 minutes","16–30 minutes","5–15 minutes","Around the house only","Not at all — pain is severe on walking"]},
+      {text:"7. Have you been able to climb a flight of stairs?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
+      {text:"8. After a meal (sat at a table), how painful has it been for you to stand up from a chair because of your hip?",opts:["Not at all painful","Slightly painful","Moderately painful","Very painful","Unbearable"]},
+      {text:"9. Have you been limping when walking, because of your hip?",opts:["Rarely / never","Sometimes or just at first","Often, not just at first","Most of the time","All of the time"]},
+      {text:"10. Have you had any sudden severe pain — 'shooting', 'stabbing' or 'spasms' — from the affected hip?",opts:["No days","Only 1 or 2 days","Some days","Most days","Every day"]},
+      {text:"11. How much has pain from your hip interfered with your usual work (including housework)?",opts:["Not at all","A little bit","Moderately","Greatly","Totally"]},
+      {text:"12. Have you been troubled by pain from your hip in bed at night?",opts:["No nights","Only 1 or 2 nights","Some nights","Most nights","Every night"]}
+    ]
+  }
+
+};
+
+// ─── STATE ────────────────────────────────────────────
+let selectedQx = [];
+let patientStepOrder = [];
+let patientStepIndex = 0;
+
+// ─── SCREENS ──────────────────────────────────────────
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── PIN ──────────────────────────────────────────────
+document.getElementById('pin-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
+
+function checkPin(){
+  const val = document.getElementById('pin-input').value.trim().toLowerCase();
+  const err = document.getElementById('pin-error');
+  err.style.display='none';
+  document.getElementById('pin-input').style.borderColor='var(--border)';
+  if(val===ADMIN_CODE.toLowerCase()){
+    buildAdminPanel();
+    showScreen('screen-admin');
+  } else if(val===PATIENT_CODE.toLowerCase()){
+    selectedQx = Object.keys(QUESTIONNAIRES);
+    buildPatientForm();
+    showScreen('screen-form');
+  } else {
+    err.style.display='block';
+    document.getElementById('pin-input').style.borderColor='var(--error)';
+  }
+}
+
+function logout(){
+  document.getElementById('pin-input').value='';
+  document.getElementById('pin-error').style.display='none';
+  showScreen('screen-pin');
+}
+
+// ─── ADMIN ────────────────────────────────────────────
+function buildAdminPanel(){
+  const panel = document.getElementById('qx-panel');
+  panel.innerHTML='';
+  QX_CATEGORIES.forEach(cat=>{
+    const catDiv = document.createElement('div');
+    catDiv.className='qx-category';
+    catDiv.innerHTML=`<div class="qx-cat-label">${cat.label}</div><div class="qx-grid" id="qxgrid-${cat.label}"></div>`;
+    panel.appendChild(catDiv);
+    const grid = catDiv.querySelector('.qx-grid');
+    cat.items.forEach(key=>{
+      const qx = QUESTIONNAIRES[key];
+      const tile = document.createElement('label');
+      tile.className='qx-tile';
+      tile.innerHTML=`
+        <input type="checkbox" value="${key}" onchange="this.closest('.qx-tile').classList.toggle('selected',this.checked)">
+        <div class="qx-tile-text">
+          <strong>${qx.label}</strong>
+          <span>${qx.abbr}</span>
+        </div>`;
+      grid.appendChild(tile);
+    });
+  });
+}
+
+function generateEmail(){
+  const fn = document.getElementById('a-firstname').value.trim();
+  const ln = document.getElementById('a-lastname').value.trim();
+  const email = document.getElementById('a-email').value.trim();
+  const note = document.getElementById('a-note').value.trim();
+  if(!fn||!ln) return alert('Please enter the patient\'s name.');
+  if(!email) return alert('Please enter the patient\'s email.');
+  const checked = Array.from(document.querySelectorAll('#qx-panel input:checked')).map(cb=>cb.value);
+  if(checked.length===0) return alert('Please select at least one questionnaire.');
+  const qxLines = checked.map(k=>`• ${QUESTIONNAIRES[k].label} (${QUESTIONNAIRES[k].abbr})`).join('\n');
+  const subject = encodeURIComponent(`Stride Care — Patient form to complete`);
+  const body = encodeURIComponent(
+`Hi ${fn},
+
+Your physiotherapist at Stride Care has sent you a form to complete.
+
+Link: ${FORM_URL}
+Access code: ${PATIENT_CODE}
+
+The form includes the following questionnaire${checked.length>1?'s':''}:
+${qxLines}
+
+It should only take a few minutes to complete.${note?'\n\n'+note:''}
+
+If you have any questions, please contact us on 0403 623 622 or reply to this email.
+
+Kind regards,
+Khalid Khalak
+Stride Care Physiotherapy
+stridecare@outlook.com | 0403 623 622 | stridecare.au`);
+  sessionStorage.setItem('sc_qx', JSON.stringify(checked));
+  window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
+}
+
+// ─── PATIENT FORM ─────────────────────────────────────
+function buildPatientForm(){
+  const stored = sessionStorage.getItem('sc_qx');
+  if(stored) selectedQx = JSON.parse(stored);
+  patientStepOrder = ['details','pain',...selectedQx,'consent'];
+  patientStepIndex = 0;
+
+  // Build dynamic qx steps
+  const container = document.getElementById('pstep-qx-container');
+  container.innerHTML='';
+  selectedQx.forEach(key=>{
+    const qx = QUESTIONNAIRES[key];
+    let html=`<div id="pstep-${key}" class="pstep hidden">
+      <div class="section-card">
+        <div class="section-title">Questionnaire</div>
+        <div class="om-header">📋 ${qx.name}</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:18px;line-height:1.6;">${qx.intro}</p>`;
+    qx.questions.forEach((q,qi)=>{
+      html+=`<div class="om-question"><p>${q.text}</p><div class="om-options">`;
+      q.opts.forEach(opt=>{
+        html+=`<label class="om-opt"><input type="radio" name="qx_${key}_${qi}" value="${opt}"
+          onchange="this.closest('.om-options').querySelectorAll('.om-opt').forEach(o=>o.classList.remove('selected'));this.closest('.om-opt').classList.add('selected');">
+          ${opt}</label>`;
+      });
+      html+=`</div></div>`;
+    });
+    html+=`</div>
+      <div class="nav-btns">
+        <button class="btn-back" onclick="patientBack()">← Back</button>
+        <button class="btn-next" onclick="patientNext()">Next →</button>
+      </div></div>`;
+    container.insertAdjacentHTML('beforeend',html);
+  });
+
+  buildScales();
+  showPatientStep(0);
+}
+
+function showPatientStep(idx){
+  document.querySelectorAll('.pstep').forEach(s=>s.classList.add('hidden'));
+  const key = patientStepOrder[idx];
+  const el = key==='details'?document.getElementById('pstep-details')
+           : key==='pain'   ?document.getElementById('pstep-pain')
+           : key==='consent'?document.getElementById('pstep-consent')
+           : document.getElementById('pstep-'+key);
+  if(el) el.classList.remove('hidden');
+  patientStepIndex=idx;
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function patientNext(){if(!validateStep())return;if(patientStepIndex<patientStepOrder.length-1)showPatientStep(patientStepIndex+1);}
+function patientBack(){if(patientStepIndex>0)showPatientStep(patientStepIndex-1);}
+
+function updateProgress(){
+  const pct=(patientStepIndex/(patientStepOrder.length-1))*100;
+  document.getElementById('progress-fill').style.width=pct+'%';
+  document.getElementById('step-label').textContent=`Step ${patientStepIndex+1} of ${patientStepOrder.length}`;
+}
+
+// ─── VALIDATION ───────────────────────────────────────
+function validateStep(){
+  const key=patientStepOrder[patientStepIndex];
+  if(key==='details'){
+    if(!gv('f-firstname'))return alert('Please enter your first name.'),false;
+    if(!gv('f-lastname'))return alert('Please enter your last name.'),false;
+    if(!gv('f-dob'))return alert('Please enter your date of birth.'),false;
+    if(!gv('f-phone'))return alert('Please enter your phone number.'),false;
+  }
+  if(key==='pain'){
+    if(!document.getElementById('f-pain-rest').value)return alert('Please select your pain level at rest.'),false;
+    if(!document.getElementById('f-pain-activity').value)return alert('Please select your pain level with activity.'),false;
+    if(!getRadio('duration'))return alert('Please select how long you have had this problem.'),false;
+  }
+  if(key==='consent'){
+    if(!document.getElementById('f-consent').checked)return alert('Please confirm your consent to submit.'),false;
+  }
+  return true;
+}
+
+// ─── SCALES ───────────────────────────────────────────
+function buildScales(){
+  buildScale('scale-rest','f-pain-rest');
+  buildScale('scale-activity','f-pain-activity');
+  buildScale('scale-function','f-function');
+}
+function buildScale(cid,hid){
+  const wrap=document.getElementById(cid);if(!wrap)return;
+  wrap.innerHTML='';
+  for(let i=0;i<=10;i++){
+    const btn=document.createElement('button');
+    btn.type='button';btn.className='scale-btn';btn.textContent=i;
+    btn.onclick=()=>{wrap.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');document.getElementById(hid).value=i;};
+    wrap.appendChild(btn);
+  }
+}
+
+// ─── HELPERS ──────────────────────────────────────────
+function gv(id){const e=document.getElementById(id);return e?e.value.trim():'';}
+function getRadio(name){const s=document.querySelector(`input[name="${name}"]:checked`);return s?s.value:'';}
+function getCheckboxes(name){return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(e=>e.value).join(', ');}
+
+document.addEventListener('change',function(e){
+  if(e.target.type==='radio'&&e.target.closest('.radio-opt')){
+    const name=e.target.name;
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.closest('.radio-opt')&&r.closest('.radio-opt').classList.remove('selected'));
+    e.target.closest('.radio-opt').classList.add('selected');
+  }
+  if(e.target.type==='checkbox'&&e.target.closest('.check-opt')){
+    e.target.closest('.check-opt').classList.toggle('selected',e.target.checked);
+  }
+});
+
+// ─── SUBMIT ───────────────────────────────────────────
+async function submitForm(){
+  if(!document.getElementById('f-consent').checked)return alert('Please confirm your consent.'),false;
+  const btn=document.getElementById('btn-submit');
+  btn.disabled=true;btn.textContent='Submitting…';
+
+  let qxOutput='';
+  selectedQx.forEach(key=>{
+    const qx=QUESTIONNAIRES[key];
+    qxOutput+=`\n━━ ${qx.name} ━━\n`;
+    qx.questions.forEach((q,qi)=>{
+      const sel=document.querySelector(`input[name="qx_${key}_${qi}"]:checked`);
+      qxOutput+=`${q.text}: ${sel?sel.value:'Not answered'}\n`;
+    });
+  });
+
+  const body=`
+STRIDE CARE — PATIENT INTAKE FORM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${gv('f-firstname')} ${gv('f-lastname')}
+DOB: ${gv('f-dob')}
+Phone: ${gv('f-phone')}
+
+━━ PAIN & FUNCTION ━━
+Pain at rest (0–10): ${document.getElementById('f-pain-rest').value}
+Pain with activity (0–10): ${document.getElementById('f-pain-activity').value}
+Overall function (0–10): ${document.getElementById('f-function').value}
+Duration: ${getRadio('duration')}
+Aggravating factors: ${gv('f-worse')}
+Easing factors: ${gv('f-better')}
+Previous treatment: ${getCheckboxes('prev-tx')}
+Medical history: ${gv('f-pmhx')}
+${qxOutput}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`.trim();
+
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        access_key:WEB3FORMS_KEY,
+        subject:`Intake — ${gv('f-firstname')} ${gv('f-lastname')} | ${selectedQx.map(k=>QUESTIONNAIRES[k].abbr).join(', ')}`,
+        from_name:'Stride Care Intake Form',
+        to:'stridecare@outlook.com',
+        message:body
+      })
+    });
+    const data=await res.json();
+    if(data.success){showScreen('screen-success');}
+    else throw new Error();
+  }catch{
+    alert('Submission failed. Please try again or contact us on 0403 623 622.');
+    btn.disabled=false;btn.textContent='Submit →';
+  }
+}
+</script>
+</body>
+</html>
