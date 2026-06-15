@@ -14,16 +14,10 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--warm-bg);color:var(--text);min-height:100vh;padding-bottom:60px;}
-
-/* Header */
 .header{background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:14px;}
 .header-text h1{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--teal-dark);}
 .header-text p{font-size:0.7rem;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;}
-
-/* Screens */
 .screen{display:none;} .screen.active{display:block;}
-
-/* PIN */
 .pin-wrap{max-width:400px;margin:70px auto 0;padding:0 20px;text-align:center;}
 .lock-icon{width:52px;height:52px;background:var(--sage-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
 .pin-wrap h2{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--teal-dark);margin-bottom:8px;}
@@ -33,15 +27,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--warm-bg);color:
 .pin-error{color:var(--error);font-size:0.81rem;margin-top:8px;display:none;}
 .btn-primary{display:block;width:100%;margin-top:14px;padding:13px;background:var(--teal);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.93rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
 .btn-primary:hover{background:var(--teal-dark);}
-
-/* Admin */
 .admin-wrap{max-width:680px;margin:0 auto;padding:28px 20px 0;}
 .admin-header{background:var(--teal-dark);color:white;border-radius:var(--radius) var(--radius) 0 0;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;}
 .admin-header h2{font-family:'Playfair Display',serif;font-size:1.1rem;}
 .admin-header span{font-size:0.75rem;opacity:0.75;letter-spacing:0.04em;text-transform:uppercase;}
 .admin-body{background:var(--white);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:24px 22px;box-shadow:var(--shadow);margin-bottom:20px;}
-
-/* Fields */
 .field{margin-bottom:16px;} .field:last-child{margin-bottom:0;}
 .field-label{display:block;font-size:0.83rem;font-weight:600;color:var(--text);margin-bottom:6px;}
 .hint{font-weight:400;font-size:0.76rem;color:var(--text-muted);display:block;margin-top:2px;}
@@ -52,8 +42,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);}
 textarea{resize:vertical;min-height:70px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 @media(max-width:500px){.field-row{grid-template-columns:1fr;}}
-
-/* Questionnaire category grid */
 .qx-category{margin-bottom:20px;}
 .qx-cat-label{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--sage-light);}
 .qx-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
@@ -64,37 +52,28 @@ textarea{resize:vertical;min-height:70px;}
 .qx-tile input[type="checkbox"]{accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;}
 .qx-tile-text strong{display:block;font-size:0.82rem;font-weight:600;color:var(--text);}
 .qx-tile-text span{font-size:0.71rem;color:var(--text-muted);}
-
 .section-title{font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--sage-light);}
 .btn-generate{width:100%;margin-top:20px;padding:14px;background:var(--teal);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
 .btn-generate:hover{background:var(--teal-dark);}
 .divider{text-align:center;color:var(--text-muted);font-size:0.75rem;margin:20px 0 0;letter-spacing:0.04em;text-transform:uppercase;}
 .btn-logout{display:block;margin:8px auto 0;font-size:0.78rem;color:var(--text-muted);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:'Plus Jakarta Sans',sans-serif;}
 .btn-logout:hover{color:var(--teal-dark);}
-
-/* Patient form */
 .form-wrap{max-width:680px;margin:0 auto;padding:28px 20px 0;}
 .form-intro{background:var(--white);border-radius:var(--radius);padding:20px 24px;margin-bottom:16px;box-shadow:var(--shadow);}
 .form-intro h2{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--teal-dark);margin-bottom:5px;}
 .form-intro p{font-size:0.84rem;color:var(--text-muted);line-height:1.6;}
 .section-card{background:var(--white);border-radius:var(--radius);padding:22px 24px;margin-bottom:14px;box-shadow:var(--shadow);}
-
-/* Radio / check */
 .radio-group,.check-group{display:flex;flex-direction:column;gap:7px;}
 .radio-group.inline,.check-group.inline{flex-direction:row;flex-wrap:wrap;gap:8px;}
 .radio-opt,.check-opt{display:flex;align-items:center;gap:9px;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color 0.2s,background 0.2s;font-size:0.84rem;user-select:none;}
 .radio-opt:hover,.check-opt:hover{border-color:var(--teal);background:var(--sage-light);}
 .radio-opt input,.check-opt input{accent-color:var(--teal);width:15px;height:15px;}
 .radio-opt.selected,.check-opt.selected{border-color:var(--teal);background:var(--sage-light);}
-
-/* Pain scale */
 .scale-wrap{display:flex;gap:5px;flex-wrap:wrap;}
 .scale-btn{width:40px;height:40px;border:1.5px solid var(--border);border-radius:8px;background:white;font-size:0.86rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);}
 .scale-btn:hover{border-color:var(--teal);background:var(--sage-light);}
 .scale-btn.selected{background:var(--teal);color:white;border-color:var(--teal);}
 .scale-labels{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-top:5px;}
-
-/* Outcome measure */
 .om-header{background:var(--sage-light);border-radius:8px;padding:11px 15px;margin-bottom:14px;font-size:0.81rem;color:var(--teal-dark);font-weight:600;}
 .om-question{margin-bottom:18px;}
 .om-question p{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:9px;line-height:1.5;}
@@ -103,13 +82,9 @@ textarea{resize:vertical;min-height:70px;}
 .om-opt:hover{border-color:var(--teal);background:var(--sage-light);}
 .om-opt.selected{border-color:var(--teal);background:var(--sage-light);}
 .om-opt input{accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:1px;}
-
-/* Progress */
 .progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:10px;overflow:hidden;}
 .progress-fill{height:100%;background:var(--teal);border-radius:2px;transition:width 0.4s ease;}
 .step-label{font-size:0.73rem;color:var(--text-muted);margin-bottom:18px;font-weight:500;}
-
-/* Nav */
 .nav-btns{display:flex;gap:10px;margin-top:20px;}
 .btn-back{flex:0 0 auto;padding:12px 20px;background:white;color:var(--text);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;font-weight:600;cursor:pointer;transition:border-color 0.2s;}
 .btn-back:hover{border-color:var(--teal);}
@@ -118,8 +93,6 @@ textarea{resize:vertical;min-height:70px;}
 .btn-submit{flex:1;padding:14px;background:var(--teal-dark);color:white;border:none;border-radius:var(--radius);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.93rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
 .btn-submit:hover{background:#2e6b67;}
 .btn-submit:disabled{opacity:0.6;cursor:not-allowed;}
-
-/* Success */
 .success-wrap{max-width:460px;margin:80px auto 0;padding:0 20px;text-align:center;}
 .success-icon{width:60px;height:60px;background:var(--sage-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
 .success-wrap h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--teal-dark);margin-bottom:10px;}
@@ -129,7 +102,6 @@ textarea{resize:vertical;min-height:70px;}
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
     <circle cx="30" cy="30" r="30" fill="#5aada8" opacity="0.12"/>
@@ -142,7 +114,6 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- SCREEN: PIN -->
 <div id="screen-pin" class="screen active">
   <div class="pin-wrap">
     <div class="lock-icon">
@@ -158,7 +129,6 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- SCREEN: ADMIN -->
 <div id="screen-admin" class="screen">
   <div class="admin-wrap">
     <div class="admin-header">
@@ -181,10 +151,8 @@ textarea{resize:vertical;min-height:70px;}
         <label class="field-label">Patient Email <span style="color:var(--teal)">*</span></label>
         <input type="email" id="a-email" placeholder="patient@email.com">
       </div>
-
       <div class="section-title" style="margin-top:22px;">Select Questionnaires</div>
-      <div id="qx-panel"><!-- built by JS --></div>
-
+      <div id="qx-panel"></div>
       <div class="field" style="margin-top:18px;">
         <label class="field-label">Additional note <span class="hint">Optional — appears in the email</span></label>
         <textarea id="a-note" placeholder="e.g. Please complete this before your Thursday appointment."></textarea>
@@ -196,7 +164,6 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- SCREEN: PATIENT FORM -->
 <div id="screen-form" class="screen">
   <div class="form-wrap">
     <div class="form-intro">
@@ -206,7 +173,6 @@ textarea{resize:vertical;min-height:70px;}
     <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     <div class="step-label" id="step-label"></div>
 
-    <!-- Step: Details -->
     <div id="pstep-details" class="pstep hidden">
       <div class="section-card">
         <div class="section-title">Your Details</div>
@@ -236,7 +202,6 @@ textarea{resize:vertical;min-height:70px;}
       </div>
     </div>
 
-    <!-- Step: Pain -->
     <div id="pstep-pain" class="pstep hidden">
       <div class="section-card">
         <div class="section-title">Current Pain & Function</div>
@@ -258,7 +223,7 @@ textarea{resize:vertical;min-height:70px;}
         </div>
         <div class="field" style="margin-top:18px;">
           <label class="field-label">Overall function
-            <span class="hint">0 = completely unable to do usual activities, 10 = back to normal</span>
+            <span class="hint">0 = completely unable, 10 = back to normal</span>
           </label>
           <div class="scale-wrap" id="scale-function"></div>
           <div class="scale-labels"><span>Completely unable</span><span>Fully able</span></div>
@@ -275,29 +240,19 @@ textarea{resize:vertical;min-height:70px;}
             <label class="radio-opt"><input type="radio" name="duration" value="Over 12 months"> Over 12 months</label>
           </div>
         </div>
-        <div class="field">
-          <label class="field-label">What makes your symptoms better?</label>
-          <textarea id="f-better" placeholder="e.g. Rest, heat, walking, lying down..."></textarea>
-        </div>
-        <div class="field">
-          <label class="field-label">What makes your symptoms worse?</label>
-          <textarea id="f-worse" placeholder="e.g. Sitting, bending, lifting, first thing in the morning..."></textarea>
-        </div>
-        <div class="field">
-          <label class="field-label">Previous treatment for this condition</label>
+        <div class="field"><label class="field-label">What makes your symptoms better?</label><textarea id="f-better"></textarea></div>
+        <div class="field"><label class="field-label">What makes your symptoms worse?</label><textarea id="f-worse"></textarea></div>
+        <div class="field"><label class="field-label">Previous treatment</label>
           <div class="check-group">
             <label class="check-opt"><input type="checkbox" name="prev-tx" value="Physiotherapy"> Physiotherapy</label>
             <label class="check-opt"><input type="checkbox" name="prev-tx" value="Chiropractic / osteopathy"> Chiropractic / osteopathy</label>
             <label class="check-opt"><input type="checkbox" name="prev-tx" value="Surgery"> Surgery</label>
-            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Injections / cortisone"> Injections / cortisone</label>
-            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Medication / pain relief"> Medication / pain relief</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Injections"> Injections / cortisone</label>
+            <label class="check-opt"><input type="checkbox" name="prev-tx" value="Medication"> Medication / pain relief</label>
             <label class="check-opt"><input type="checkbox" name="prev-tx" value="None"> None</label>
           </div>
         </div>
-        <div class="field">
-          <label class="field-label">Any relevant medical history we should know about?</label>
-          <textarea id="f-pmhx" placeholder="e.g. Diabetes, osteoporosis, previous surgeries..." style="min-height:60px;"></textarea>
-        </div>
+        <div class="field"><label class="field-label">Relevant medical history</label><textarea id="f-pmhx" style="min-height:60px;"></textarea></div>
       </div>
       <div class="nav-btns">
         <button class="btn-back" onclick="patientBack()">← Back</button>
@@ -305,10 +260,8 @@ textarea{resize:vertical;min-height:70px;}
       </div>
     </div>
 
-    <!-- Dynamic questionnaire steps injected here -->
     <div id="pstep-qx-container"></div>
 
-    <!-- Step: Consent -->
     <div id="pstep-consent" class="pstep hidden">
       <div class="section-card">
         <div class="section-title">Declaration</div>
@@ -327,7 +280,6 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- SCREEN: SUCCESS -->
 <div id="screen-success" class="screen">
   <div class="success-wrap">
     <div class="success-icon">
@@ -335,93 +287,30 @@ textarea{resize:vertical;min-height:70px;}
     </div>
     <h2>Thank you!</h2>
     <p>Your form has been received by the Stride Care team.</p>
-    <p style="margin-top:14px;">Questions? Contact us on <strong>0403 623 622</strong> or <strong>stridecare@outlook.com</strong></p>
+    <p style="margin-top:14px;">Questions? Reply to the email from your physiotherapist.</p>
   </div>
 </div>
 
 <script>
-// ─── CONFIG ───────────────────────────────────────────
 const ADMIN_CODE    = "stride-admin";
 const PATIENT_CODE  = "stride25";
 const WEB3FORMS_KEY = "7f958967-a9f6-48ea-bdd2-7fb038241bde";
-const FORM_URL      = "https://stridecare.au/intake";
+const FORM_URL      = "https://stridecare.au/stride-intake.html";
 
-// ─── QUESTIONNAIRE DEFINITIONS ────────────────────────
 const QX_CATEGORIES = [
-  {
-    label: "General",
-    items: ["ompq","phq9","gad7","pcs","tsk","fabq"]
-  },
-  {
-    label: "Spine & Head",
-    items: ["odi","ndi"]
-  },
-  {
-    label: "Upper Limb",
-    items: ["dash","quickdash","visap"]
-  },
-  {
-    label: "Lower Limb",
-    items: ["koos","hoos","faam","visaa","oxford_knee","oxford_hip"]
-  }
+  { label:"General", items:["phq9","gad7","tsk","fabq"] },
+  { label:"Back Pain Screening", items:["startback","ompsq10"] },
+  { label:"Spine & Head", items:["ndi","hdi"] },
+  { label:"Upper Limb", items:["quickdash","spadi","prwe","uefi"] },
+  { label:"Lower Limb", items:["koos","hoos","fadi"] },
+  { label:"Pain Evaluation", items:["pcs","pseq"] },
+  { label:"Psychological", items:["dass42","ies","k10"] },
+  { label:"Work & Function", items:["wpai","fist"] }
 ];
 
 const QUESTIONNAIRES = {
 
-  // ── GENERAL ──────────────────────────────────────────
-
-  ompq: {
-    label:"Örebro MSK Pain Questionnaire", abbr:"OMPQ",
-    name:"Örebro Musculoskeletal Pain Questionnaire (OMPQ)",
-    intro:"The following questions are about you and your current problem. Please answer all of them by selecting the option that best describes your situation.",
-    questions:[
-      {text:"1. How long have you had your current pain problem?",
-       opts:["0 – 1 week","1–2 weeks","3–4 weeks","4–5 weeks","6–8 weeks","9–11 weeks","3–6 months","6–9 months","9–12 months","Over 1 year"]},
-      {text:"2. How often did you have pain before this latest episode?",
-       opts:["Never had pain before","Occasional mild pain","Occasional severe pain","Frequent mild pain","Frequent severe pain","Pain is constant"]},
-      {text:"3. How would you rate the pain you have had during the past week? (0 = No pain, 10 = Pain as bad as it could be)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"4. In the past 3 months, on average, how bad was your pain? (0 = No pain, 10 = Pain as bad as it could be)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"5. How often would you say that you have experienced pain episodes, on average, during the past 3 months?",
-       opts:["Never","About once per month","About 2–3 times per month","About once per week","About 2–3 times per week","About every day","Constantly"]},
-      {text:"6. Based on all the things you do to cope, or deal with your pain, on an average day, how much are you able to decrease it? (0 = Can't decrease at all, 10 = Can decrease it completely)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"7. I can do light work for an hour (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"8. I can walk for an hour (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"9. I can do ordinary household chores (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"10. I can go shopping (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"11. I can sleep at night (0 = Can't do it because of pain, 10 = Can do it without pain being a problem)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"12. The pain is my own fault. (0 = Completely disagree, 10 = Completely agree)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"13. My pain is severe and will never get better. (0 = Completely disagree, 10 = Completely agree)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"14. In general, I am fearful of being physically active or exercising. (0 = Completely disagree, 10 = Completely agree)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"15. An increase in pain is an indication that I should stop what I am doing until the pain decreases. (0 = Completely disagree, 10 = Completely agree)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"16. I should not do my normal work with my present pain. (0 = Completely disagree, 10 = Completely agree)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"17. I cannot do the things I normally do until my pain is treated. (0 = Completely disagree, 10 = Completely agree)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"18. How worried are you about your pain? (0 = Not at all worried, 10 = Extremely worried)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"19. In your estimation, what are the chances that you will be able to work in 6 months? (0 = No chance, 10 = Very large chance)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"20. If you take into account your work pace, your working posture, and other conditions in your workplace, how do you rate your own work? (0 = My work is not physically strenuous at all, 10 = My work is extremely physically strenuous)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10","Not currently working"]},
-      {text:"21. How tense or anxious have you felt in the past week? (0 = Not at all tense/anxious, 10 = Extremely tense/anxious)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]},
-      {text:"22. How much have you been bothered by feeling down, depressed, or hopeless over the past week? (0 = Not at all, 10 = Extremely)",
-       opts:["0","1","2","3","4","5","6","7","8","9","10"]}
-    ]
-  },
-
+  // ─── GENERAL ────────────────────────────────────
   phq9: {
     label:"PHQ-9 (Depression)", abbr:"PHQ-9",
     name:"Patient Health Questionnaire – 9 (PHQ-9)",
@@ -433,10 +322,10 @@ const QUESTIONNAIRES = {
       {text:"4. Feeling tired or having little energy",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
       {text:"5. Poor appetite or overeating",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
       {text:"6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
-      {text:"7. Trouble concentrating on things, such as reading the newspaper or watching television",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
-      {text:"8. Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"7. Trouble concentrating on things",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
+      {text:"8. Moving or speaking so slowly that other people could have noticed, or the opposite — being so fidgety or restless that you have been moving around a lot more than usual",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
       {text:"9. Thoughts that you would be better off dead or of hurting yourself in some way",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
-      {text:"10. If you checked off any problems above, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",opts:["Not difficult at all","Somewhat difficult","Very difficult","Extremely difficult"]}
+      {text:"10. How difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",opts:["Not difficult at all","Somewhat difficult","Very difficult","Extremely difficult"]}
     ]
   },
 
@@ -451,15 +340,324 @@ const QUESTIONNAIRES = {
       {text:"4. Trouble relaxing",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
       {text:"5. Being so restless that it is hard to sit still",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
       {text:"6. Becoming easily annoyed or irritable",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
-      {text:"7. Feeling afraid as if something awful might happen",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]},
-      {text:"8. If you checked off any problems above, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",opts:["Not difficult at all","Somewhat difficult","Very difficult","Extremely difficult"]}
+      {text:"7. Feeling afraid as if something awful might happen",opts:["0 – Not at all","1 – Several days","2 – More than half the days","3 – Nearly every day"]}
     ]
   },
 
+  tsk: {
+    label:"Tampa Kinesiophobia", abbr:"TSK-11",
+    name:"Tampa Scale of Kinesiophobia (TSK-11)",
+    intro:"Below are some statements. Please indicate the extent to which you agree or disagree.",
+    questions:[
+      {text:"1. I'm afraid that I might injure myself if I exercise.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"2. If I were to try to overcome it, my pain would increase.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"3. My body is telling me I have something dangerously wrong.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"4. My pain would probably be relieved if I were to exercise.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"5. People aren't taking my medical condition seriously enough.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"6. My accident has put my body at risk for the rest of my life.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"7. Pain always means I have injured my body.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"8. I am afraid that I might injure myself accidentally.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"9. The safest thing I can do when I'm in pain is just be careful and not make any unnecessary movements.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"10. I wouldn't have this much pain if there weren't something potentially dangerous going on in my body.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
+      {text:"11. Although my condition is painful, I would be better off if I were physically active.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]}
+    ]
+  },
+
+  fabq: {
+    label:"Fear Avoidance Beliefs", abbr:"FABQ",
+    name:"Fear Avoidance Beliefs Questionnaire (FABQ)",
+    intro:"For each statement, please indicate how strongly you agree, on a scale of 0 (completely disagree) to 6 (completely agree).",
+    questions:[
+      {text:"1. My pain was caused by physical activity.",opts:["0","1","2","3","4","5","6"]},
+      {text:"2. Physical activity makes my pain worse.",opts:["0","1","2","3","4","5","6"]},
+      {text:"3. Physical activity might harm my back.",opts:["0","1","2","3","4","5","6"]},
+      {text:"4. I should not do physical activities which (might) make my pain worse.",opts:["0","1","2","3","4","5","6"]},
+      {text:"5. I cannot do physical activities which (might) make my pain worse.",opts:["0","1","2","3","4","5","6"]},
+      {text:"6. My pain was caused by my work or by an accident at work.",opts:["0","1","2","3","4","5","6"]},
+      {text:"7. My work aggravated or caused my pain.",opts:["0","1","2","3","4","5","6"]},
+      {text:"8. I have a claim for compensation for my pain.",opts:["0","1","2","3","4","5","6"]},
+      {text:"9. My work is too heavy for me.",opts:["0","1","2","3","4","5","6"]},
+      {text:"10. My work makes or would make my pain worse.",opts:["0","1","2","3","4","5","6"]},
+      {text:"11. My work might harm my back.",opts:["0","1","2","3","4","5","6"]},
+      {text:"12. I should not do my normal work with my present pain.",opts:["0","1","2","3","4","5","6"]},
+      {text:"13. I cannot do my normal work with my present pain.",opts:["0","1","2","3","4","5","6"]},
+      {text:"14. I cannot do my normal work until my pain is treated.",opts:["0","1","2","3","4","5","6"]},
+      {text:"15. I do not think that I will be back to my normal work within 3 months.",opts:["0","1","2","3","4","5","6"]},
+      {text:"16. I do not think that I will ever be able to go back to that work.",opts:["0","1","2","3","4","5","6"]}
+    ]
+  },
+
+  // ─── BACK PAIN SCREENING ────────────────────────
+  startback: {
+    label:"Keele STarT Back", abbr:"STarT Back",
+    name:"Keele STarT Back Screening Tool",
+    intro:"Thinking about the last 2 weeks, please answer the following.",
+    questions:[
+      {text:"1. My back pain has spread down my leg(s) at some time in the last 2 weeks",opts:["Disagree","Agree"]},
+      {text:"2. I have had pain in the shoulder or neck at some time in the last 2 weeks",opts:["Disagree","Agree"]},
+      {text:"3. I have only walked short distances because of my back pain",opts:["Disagree","Agree"]},
+      {text:"4. In the last 2 weeks, I have dressed more slowly than usual because of back pain",opts:["Disagree","Agree"]},
+      {text:"5. It's not really safe for a person with a condition like mine to be physically active",opts:["Disagree","Agree"]},
+      {text:"6. Worrying thoughts have been going through my mind a lot of the time",opts:["Disagree","Agree"]},
+      {text:"7. I feel that my back pain is terrible and it's never going to get any better",opts:["Disagree","Agree"]},
+      {text:"8. In general I have not enjoyed all the things I used to enjoy",opts:["Disagree","Agree"]},
+      {text:"9. Overall, how bothersome has your back pain been in the last 2 weeks?",opts:["Not at all","Slightly","Moderately","Very much","Extremely"]}
+    ]
+  },
+
+  ompsq10: {
+    label:"Short Form Örebro (OMPSQ-10)", abbr:"OMPSQ-10",
+    name:"Short Form Örebro Musculoskeletal Pain Screening Questionnaire (OMPSQ-10)",
+    intro:"These questions help screen for risk factors that may delay recovery. Please answer all questions honestly.",
+    questions:[
+      {text:"1. How long have you had your current pain problem?",opts:["1 – 0–1 week","2 – 1–2 weeks","3 – 3–4 weeks","4 – 4–5 weeks","5 – 6–8 weeks","6 – 9–11 weeks","7 – 3–6 months","8 – 6–9 months","9 – 9–12 months","10 – Over 1 year"]},
+      {text:"2. How would you rate the pain you have had during the past week? (0 = no pain, 10 = pain as bad as it could be)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"3. I can sleep at night (0 = can't because of pain, 10 = no problem)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"4. How tense or anxious have you felt in the past week? (0 = not at all, 10 = extremely)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"5. How much have you been bothered by feeling depressed in the past week? (0 = not at all, 10 = extremely)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"6. In your view, how large is the risk that your current pain may become persistent? (0 = no risk, 10 = very large risk)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"7. In your estimation, what are the chances you will be working in 3 months? (0 = no chance, 10 = very large chance)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"8. If you take into account your work routines, management, salary, promotion possibilities and workmates, how satisfied are you with your job? (0 = not at all, 10 = completely)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"9. Physical activity makes my pain worse (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"10. An increase in pain is an indication that I should stop what I'm doing until the pain decreases (0 = completely disagree, 10 = completely agree)",opts:["0","1","2","3","4","5","6","7","8","9","10"]}
+    ]
+  },
+
+  // ─── SPINE & HEAD ───────────────────────────────
+  ndi: {
+    label:"Neck Disability Index", abbr:"NDI",
+    name:"Neck Disability Index (NDI)",
+    intro:"Please select ONE statement per section that best describes your current situation.",
+    questions:[
+      {text:"1. Pain Intensity",opts:["I have no pain at the moment","The pain is very mild at the moment","The pain is moderate at the moment","The pain is fairly severe at the moment","The pain is very severe at the moment","The pain is the worst imaginable at the moment"]},
+      {text:"2. Personal Care",opts:["I can look after myself normally without causing extra pain","I can look after myself normally but it causes extra pain","It is painful to look after myself and I am slow and careful","I need some help but manage most of my personal care","I need help every day in most aspects of self care","I do not get dressed, I wash with difficulty and stay in bed"]},
+      {text:"3. Lifting",opts:["I can lift heavy weights without extra pain","I can lift heavy weights but it gives extra pain","Pain prevents me lifting heavy weights off the floor, but I can manage if conveniently placed","Pain prevents me lifting heavy weights, but I can manage light to medium weights if conveniently placed","I can only lift very light weights","I cannot lift or carry anything at all"]},
+      {text:"4. Reading",opts:["I can read as much as I want with no pain in my neck","I can read as much as I want with slight pain in my neck","I can read as much as I want with moderate pain in my neck","I cannot read as much as I want because of moderate pain in my neck","I can hardly read at all because of severe pain in my neck","I cannot read at all"]},
+      {text:"5. Headaches",opts:["I have no headaches at all","I have slight headaches which come infrequently","I have moderate headaches which come infrequently","I have moderate headaches which come frequently","I have severe headaches which come frequently","I have headaches almost all the time"]},
+      {text:"6. Concentration",opts:["I can concentrate fully when I want to with no difficulty","I can concentrate fully when I want to with slight difficulty","I have a fair degree of difficulty in concentrating when I want to","I have a lot of difficulty in concentrating when I want to","I have a great deal of difficulty in concentrating when I want to","I cannot concentrate at all"]},
+      {text:"7. Work",opts:["I can do as much work as I want to","I can only do my usual work, but no more","I can do most of my usual work, but no more","I cannot do my usual work","I can hardly do any work at all","I cannot do any work at all"]},
+      {text:"8. Driving",opts:["I can drive my car without any neck pain","I can drive my car as long as I want with slight pain","I can drive my car as long as I want with moderate pain","I cannot drive my car as long as I want because of moderate pain","I can hardly drive at all because of severe pain","I cannot drive my car at all","I do not drive"]},
+      {text:"9. Sleeping",opts:["I have no trouble sleeping","My sleep is slightly disturbed","My sleep is mildly disturbed (1–2 hrs sleepless)","My sleep is moderately disturbed (2–3 hrs sleepless)","My sleep is greatly disturbed (3–5 hrs sleepless)","My sleep is completely disturbed (5–7 hrs sleepless)"]},
+      {text:"10. Recreation",opts:["I am able to engage in all my recreational activities with no neck pain","I am able to engage in all my recreational activities with some pain","I am able to engage in most but not all of my usual recreational activities","I am able to engage in only a few of my usual recreational activities","I can hardly engage in any recreational activities","I cannot engage in any recreational activities at all"]}
+    ]
+  },
+
+  hdi: {
+    label:"Headache Disability Index", abbr:"HDI",
+    name:"Headache Disability Index (HDI)",
+    intro:"Please answer the following questions regarding headaches over the past month.",
+    questions:[
+      {text:"E1. Because of my headaches I feel handicapped",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E2. Because of my headaches I feel restricted in performing routine daily activities",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E3. No one understands the effect my headaches have on my life",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F4. I restrict my recreational activities (e.g. sports, hobbies) because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E5. My headaches make me angry",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E6. Sometimes I feel that I am going to lose control because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F7. Because of my headaches I am less likely to socialise",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E8. My spouse/significant other, or family and friends have no idea what I am going through because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E9. My headaches are so bad that I feel I am going to go insane",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E10. My outlook on the world is affected by my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E11. I am afraid to go outside when I feel a headache is starting",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E12. I feel desperate because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F13. I am concerned that I am paying penalties at work or at home because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E14. My headaches place stress on my relationships with family or friends",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F15. I avoid being around people when I have a headache",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F16. I believe my headaches are making it difficult for me to achieve my goals in life",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F17. I am unable to think clearly because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F18. I get tense (e.g. muscle tension) because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F19. I do not enjoy social gatherings because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E20. I feel irritable because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F21. I avoid travelling because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E22. My headaches make me feel confused",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"E23. My headaches make me feel frustrated",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F24. I find it difficult to read because of my headaches",opts:["Yes (4)","Sometimes (2)","No (0)"]},
+      {text:"F25. I find it difficult to focus my attention away from my headaches and on other things",opts:["Yes (4)","Sometimes (2)","No (0)"]}
+    ]
+  },
+
+
+  // ─── UPPER LIMB ─────────────────────────────────
+  quickdash: {
+    label:"QuickDASH", abbr:"QuickDASH",
+    name:"QuickDASH — Disabilities of the Arm, Shoulder and Hand (Short Form)",
+    intro:"Please rate your ability to do the following activities in the last week.",
+    questions:[
+      {text:"1. Open a tight or new jar",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"2. Do heavy household chores (e.g. wash walls, floors)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"3. Carry a shopping bag or briefcase",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"4. Wash your back",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"5. Use a knife to cut food",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"6. Recreational activities in which you take some force through your arm/shoulder/hand (e.g. golf, hammering, tennis)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
+      {text:"7. During the past week, to what extent has your arm/shoulder/hand problem interfered with normal social activities?",opts:["1 – Not at all","2 – Slightly","3 – Moderately","4 – Quite a bit","5 – Extremely"]},
+      {text:"8. Were you limited in your work or daily activities because of your arm/shoulder/hand problem?",opts:["1 – Not limited","2 – Slightly limited","3 – Moderately limited","4 – Very limited","5 – Unable"]},
+      {text:"9. Arm, shoulder or hand pain",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"10. Tingling (pins and needles) in arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
+      {text:"11. Difficulty sleeping due to pain in arm, shoulder or hand",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable to sleep"]}
+    ]
+  },
+
+  spadi: {
+    label:"SPADI (Shoulder)", abbr:"SPADI",
+    name:"Shoulder Pain and Disability Index (SPADI)",
+    intro:"Please rate the following on a 0–10 scale. PAIN: 0 = no pain, 10 = worst pain imaginable. DISABILITY: 0 = no difficulty, 10 = so difficult required help.",
+    questions:[
+      {text:"PAIN – At its worst",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – When lying on the involved side",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – Reaching for something on a high shelf",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – Touching the back of your neck",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – Pushing with the involved arm",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Washing your hair",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Washing your back",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Putting on an undershirt or pullover sweater",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Putting on a shirt that buttons down the front",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Putting on your pants",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Placing an object on a high shelf",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Carrying a heavy object of 10 lb (4.5 kg)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"DISABILITY – Removing something from your back pocket",opts:["0","1","2","3","4","5","6","7","8","9","10"]}
+    ]
+  },
+
+  prwe: {
+    label:"PRWE (Wrist)", abbr:"PRWE",
+    name:"Patient-Rated Wrist Evaluation (PRWE)",
+    intro:"Please rate the average amount of PAIN and DIFFICULTY you experienced in your wrist over the past week. 0 = no pain/difficulty, 10 = worst pain ever / unable to do.",
+    questions:[
+      {text:"PAIN – At rest",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – When doing a task with a repeated wrist movement",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – When lifting a heavy object",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – When it is at its worst",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"PAIN – How often do you have pain?",opts:["0 – Never","1","2","3","4","5","6","7","8","9","10 – Always"]},
+      {text:"FUNCTION (Specific) – Turning a doorknob using my affected hand",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Specific) – Cutting meat using a knife in my affected hand",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Specific) – Fastening buttons on my shirt",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Specific) – Using my affected hand to push up from a chair",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Specific) – Carrying a 10-lb (4.5 kg) object in my affected hand",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Specific) – Using bathroom tissue with my affected hand",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Usual) – Personal care activities (dressing, washing)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Usual) – Household work (cleaning, maintenance)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Usual) – Work (your job or usual everyday work)",opts:["0","1","2","3","4","5","6","7","8","9","10"]},
+      {text:"FUNCTION (Usual) – Recreational activities",opts:["0","1","2","3","4","5","6","7","8","9","10"]}
+    ]
+  },
+
+  uefi: {
+    label:"UEFI (Upper Extremity)", abbr:"UEFI",
+    name:"Upper Extremity Functional Index (UEFI)",
+    intro:"We are interested in knowing whether you are having any difficulty at all with the following activities because of your upper limb problem. Please rate each item.",
+    questions:[
+      {text:"1. Any of your usual work, housework, or school activities",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"2. Your usual hobbies, recreational or sporting activities",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"3. Lifting a bag of groceries to waist level",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"4. Lifting a bag of groceries above your head",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"5. Grooming your hair",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"6. Pushing up on your hands (e.g. from a bathtub or chair)",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"7. Preparing food (e.g. cutting, mixing)",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"8. Driving",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"9. Vacuuming, sweeping, or raking",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"10. Dressing",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"11. Doing up buttons",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"12. Using tools or appliances",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"13. Opening doors",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"14. Cleaning",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"15. Tying or lacing shoes",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"16. Sleeping",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"17. Laundering clothes (e.g. washing, ironing, folding)",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"18. Opening a jar",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"19. Throwing a ball",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]},
+      {text:"20. Carrying a small suitcase with affected limb",opts:["0 – Extreme difficulty / unable","1 – Quite a bit","2 – Moderate","3 – A little bit","4 – No difficulty"]}
+    ]
+  },
+
+  // ─── LOWER LIMB ─────────────────────────────────
+  koos: {
+    label:"KOOS (Knee)", abbr:"KOOS",
+    name:"Knee Injury and Osteoarthritis Outcome Score (KOOS)",
+    intro:"The following questions relate to how your knee problem has affected you in the past week.",
+    questions:[
+      {text:"S1. Knee stiffness after first waking",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P1. How often do you experience knee pain?",opts:["Never","Monthly","Weekly","Daily","Always"]},
+      {text:"P2. Pain — twisting/pivoting",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P3. Pain — straightening knee fully",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P4. Pain — bending knee fully",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P5. Pain — walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P6. Pain — going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P7. Pain — at night in bed",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A1. Difficulty going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A2. Difficulty rising from sitting",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A3. Difficulty standing",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A4. Difficulty bending to floor / picking up object",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A5. Difficulty walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A6. Difficulty getting in/out of car",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A7. Difficulty shopping",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"SP1. How often are you aware of your knee problem?",opts:["Never","Monthly","Weekly","Daily","Constantly"]},
+      {text:"SP2. Modified lifestyle to avoid knee-damaging activities?",opts:["Not at all","Mildly","Moderately","Severely","Totally"]},
+      {text:"Q1. Overall, how would you rate your knee?",opts:["Excellent","Good","Fair","Poor","Very poor"]}
+    ]
+  },
+
+  hoos: {
+    label:"HOOS (Hip)", abbr:"HOOS",
+    name:"Hip Disability and Osteoarthritis Outcome Score (HOOS)",
+    intro:"The following questions relate to how your hip problem has affected you in the past week.",
+    questions:[
+      {text:"S1. Hip stiffness after first waking",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P1. How often do you experience hip pain?",opts:["Never","Monthly","Weekly","Daily","Always"]},
+      {text:"P2. Pain — going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P3. Pain — at night in bed",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P4. Pain — sitting or lying",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P5. Pain — standing upright",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"P6. Pain — walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A1. Difficulty going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A2. Difficulty rising from sitting",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A3. Difficulty standing",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A4. Difficulty bending to floor / picking up object",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A5. Difficulty walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"A6. Difficulty getting in/out of car",opts:["None","Mild","Moderate","Severe","Extreme"]},
+      {text:"SP1. How often are you aware of your hip problem?",opts:["Never","Monthly","Weekly","Daily","Constantly"]},
+      {text:"Q1. Overall, how would you rate your hip?",opts:["Excellent","Good","Fair","Poor","Very poor"]}
+    ]
+  },
+
+  fadi: {
+    label:"FADI (Foot & Ankle)", abbr:"FADI",
+    name:"Foot and Ankle Disability Index (FADI)",
+    intro:"Please rate the level of difficulty you have with the following activities. 4 = No difficulty, 3 = Slight difficulty, 2 = Moderate difficulty, 1 = Extreme difficulty, 0 = Unable to do.",
+    questions:[
+      {text:"Standing",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking on even ground",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking on even ground without shoes",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking up hills",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking down hills",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Going up stairs",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Going down stairs",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking on uneven ground",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Stepping up and down curbs",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Squatting",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Coming up onto your toes",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking initially",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking 5 minutes or less",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking approximately 10 minutes",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Walking 15 minutes or greater",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Home responsibilities",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Activities of daily living",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Personal care",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Light to moderate work (standing, walking)",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Heavy work (push/pulling, climbing, carrying)",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Recreational activities",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"Sleeping (because of foot/ankle pain)",opts:["4 – No difficulty","3 – Slight difficulty","2 – Moderate difficulty","1 – Extreme difficulty","0 – Unable to do"]},
+      {text:"PAIN – General level of pain",opts:["4 – No pain","3 – Mild pain","2 – Moderate pain","1 – Severe pain","0 – Unbearable pain"]},
+      {text:"PAIN – At rest",opts:["4 – No pain","3 – Mild pain","2 – Moderate pain","1 – Severe pain","0 – Unbearable pain"]},
+      {text:"PAIN – During your normal activity",opts:["4 – No pain","3 – Mild pain","2 – Moderate pain","1 – Severe pain","0 – Unbearable pain"]},
+      {text:"PAIN – First thing in the morning",opts:["4 – No pain","3 – Mild pain","2 – Moderate pain","1 – Severe pain","0 – Unbearable pain"]}
+    ]
+  },
+
+
+  // ─── PAIN EVALUATION ────────────────────────────
   pcs: {
-    label:"Pain Catastrophising Scale", abbr:"PCS",
+    label:"Pain Catastrophising", abbr:"PCS",
     name:"Pain Catastrophising Scale (PCS)",
-    intro:"Everyone experiences painful situations at some point in their lives. When you are in a painful situation, how often do you have the following thoughts or feelings? (0 = Not at all, 4 = All the time)",
+    intro:"When you are in pain, how often do you have the following thoughts or feelings? (0 = Not at all, 4 = All the time)",
     questions:[
       {text:"1. I worry all the time about whether the pain will end.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
       {text:"2. I feel I can't go on.",opts:["0 – Not at all","1","2","3","4 – All the time"]},
@@ -477,307 +675,164 @@ const QUESTIONNAIRES = {
     ]
   },
 
-  tsk: {
-    label:"Tampa Scale of Kinesiophobia", abbr:"TSK-11",
-    name:"Tampa Scale of Kinesiophobia (TSK-11)",
-    intro:"Below are some of the things other patients have told us about their pain. For each statement, please indicate the extent to which you agree or disagree by selecting one of the options.",
+  pseq: {
+    label:"Pain Self-Efficacy (PSEQ)", abbr:"PSEQ",
+    name:"Pain Self-Efficacy Questionnaire (PSEQ)",
+    intro:"Please rate how confident you are that you can do the following things at present, despite the pain. (0 = Not at all confident, 6 = Completely confident)",
     questions:[
-      {text:"1. I'm afraid that I might injure myself if I exercise.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"2. If I were to try to overcome it, my pain would increase.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"3. My body is telling me I have something dangerously wrong.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"4. My pain would probably be relieved if I were to exercise.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"5. People aren't taking my medical condition seriously enough.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"6. My accident has put my body at risk for the rest of my life.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"7. Pain always means I have injured my body.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"8. I am afraid that I might injure myself accidentally.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"9. The safest thing I can do when I'm in pain is just be careful and not make any unnecessary movements.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"10. I wouldn't have this much pain if there weren't something potentially dangerous going on in my body.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]},
-      {text:"11. Although my condition is painful, I would be better off if I were physically active.",opts:["1 – Strongly disagree","2 – Disagree","3 – Agree","4 – Strongly agree"]}
+      {text:"1. I can enjoy things, despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"2. I can do most of the household chores (e.g. tidying-up, washing dishes) despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"3. I can socialise with my friends or family members as often as I used to do, despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"4. I can cope with my pain in most situations.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"5. I can do some form of work, despite the pain. ('Work' includes housework, paid and unpaid work.)",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"6. I can still do many of the things I enjoy doing, such as hobbies or leisure activity, despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"7. I can cope with my pain without medication.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"8. I can still accomplish most of my goals in life, despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"9. I can live a normal lifestyle, despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]},
+      {text:"10. I can gradually become more active, despite the pain.",opts:["0 – Not at all confident","1","2","3","4","5","6 – Completely confident"]}
     ]
   },
 
-  fabq: {
-    label:"Fear Avoidance Beliefs (FABQ)", abbr:"FABQ",
-    name:"Fear Avoidance Beliefs Questionnaire (FABQ)",
-    intro:"Here are some of the things which other patients have told us about their pain. For each statement, please circle any number from 0 to 6 to say how much physical activities such as bending, lifting, walking or driving affect or would affect your back pain.",
+  // ─── PSYCHOLOGICAL ──────────────────────────────
+  dass42: {
+    label:"DASS-42", abbr:"DASS-42",
+    name:"Depression Anxiety and Stress Scale (DASS-42)",
+    intro:"Please read each statement and select a number 0–3 that indicates how much the statement applied to you over the past week. 0 = Did not apply to me at all, 1 = Applied some of the time, 2 = Applied a considerable degree, 3 = Applied very much.",
     questions:[
-      {text:"1. My pain was caused by physical activity.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"2. Physical activity makes my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"3. Physical activity might harm my back.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"4. I should not do physical activities which (might) make my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"5. I cannot do physical activities which (might) make my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"6. My pain was caused by my work or by an accident at work.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"7. My work aggravated or caused my pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"8. I have a claim for compensation for my pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"9. My work is too heavy for me.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"10. My work makes or would make my pain worse.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"11. My work might harm my back.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"12. I should not do my normal work with my present pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"13. I cannot do my normal work with my present pain.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"14. I cannot do my normal work until my pain is treated.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"15. I do not think that I will be back to my normal work within 3 months.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]},
-      {text:"16. I do not think that I will ever be able to go back to that work.",opts:["0 – Completely disagree","1","2","3","4","5","6 – Completely agree"]}
+      {text:"1. I found myself getting upset by quite trivial things.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"2. I was aware of dryness of my mouth.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"3. I couldn't seem to experience any positive feeling at all.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"4. I experienced breathing difficulty (e.g. excessively rapid breathing, breathlessness in the absence of physical exertion).",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"5. I just couldn't seem to get going.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"6. I tended to over-react to situations.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"7. I had a feeling of shakiness (e.g. legs going to give way).",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"8. I found it difficult to relax.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"9. I found myself in situations that made me so anxious I was most relieved when they ended.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"10. I felt that I had nothing to look forward to.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"11. I found myself getting upset rather easily.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"12. I felt that I was using a lot of nervous energy.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"13. I felt sad and depressed.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"14. I found myself getting impatient when I was delayed in any way.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"15. I had a feeling of faintness.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"16. I felt that I had lost interest in just about everything.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"17. I felt I wasn't worth much as a person.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"18. I felt that I was rather touchy.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"19. I perspired noticeably (e.g. hands sweaty) in the absence of high temperatures or physical exertion.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"20. I felt scared without any good reason.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"21. I felt that life wasn't worthwhile.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"22. I found it hard to wind down.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"23. I had difficulty in swallowing.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"24. I couldn't seem to get any enjoyment out of the things I did.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"25. I was aware of the action of my heart in the absence of physical exertion (e.g. sense of heart rate increase, missing a beat).",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"26. I felt down-hearted and blue.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"27. I found that I was very irritable.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"28. I felt I was close to panic.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"29. I found it hard to calm down after something upset me.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"30. I feared that I would be 'thrown' by some trivial but unfamiliar task.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"31. I was unable to become enthusiastic about anything.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"32. I found it difficult to tolerate interruptions to what I was doing.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"33. I was in a state of nervous tension.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"34. I felt I was pretty worthless.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"35. I was intolerant of anything that kept me from getting on with what I was doing.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"36. I felt terrified.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"37. I could see nothing in the future to be hopeful about.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"38. I felt that life was meaningless.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"39. I found myself getting agitated.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"40. I was worried about situations in which I might panic and make a fool of myself.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"41. I experienced trembling (e.g. in the hands).",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]},
+      {text:"42. I found it difficult to work up the initiative to do things.",opts:["0 – Did not apply","1 – Some of the time","2 – Considerable degree","3 – Very much"]}
     ]
   },
 
-  // ── SPINE & HEAD ─────────────────────────────────────
-
-  odi: {
-    label:"Oswestry Disability Index", abbr:"ODI",
-    name:"Oswestry Disability Index (ODI)",
-    intro:"The following questions relate to how your back pain affects your ability to manage everyday life. Please select ONE statement per section that most closely describes your situation today.",
+  ies: {
+    label:"Impact of Event (IES)", abbr:"IES",
+    name:"Impact of Event Scale (IES)",
+    intro:"Below is a list of comments made by people after stressful life events. Please indicate how frequently each comment was true for you DURING THE PAST SEVEN DAYS.",
     questions:[
-      {text:"1. Pain Intensity",opts:["I can tolerate the pain I have without using pain killers","The pain is bad but I manage without pain killers","Pain killers give complete relief from pain","Pain killers give moderate relief from pain","Pain killers give very little relief from pain","Pain killers have no effect on the pain and I do not use them"]},
-      {text:"2. Personal Care (washing, dressing)",opts:["I can look after myself normally without causing extra pain","I can look after myself normally but it causes extra pain","It is painful to look after myself and I am slow and careful","I need some help but manage most of my personal care","I need help every day in most aspects of self care","I do not get dressed, I wash with difficulty and stay in bed"]},
-      {text:"3. Lifting",opts:["I can lift heavy weights without extra pain","I can lift heavy weights but it gives extra pain","Pain prevents me lifting heavy weights off the floor, but I can manage if they are conveniently positioned","Pain prevents me lifting heavy weights, but I can manage light to medium weights if conveniently positioned","I can only lift very light weights","I cannot lift or carry anything at all"]},
-      {text:"4. Walking",opts:["Pain does not prevent me walking any distance","Pain prevents me walking more than 1 mile","Pain prevents me walking more than 1/2 mile","Pain prevents me walking more than 100 yards","I can only walk using a stick or crutches","I am in bed most of the time and have to crawl to the toilet"]},
-      {text:"5. Sitting",opts:["I can sit in any chair as long as I like","I can only sit in my favourite chair as long as I like","Pain prevents me sitting for more than 1 hour","Pain prevents me sitting for more than half an hour","Pain prevents me sitting for more than 10 minutes","Pain prevents me sitting at all"]},
-      {text:"6. Standing",opts:["I can stand as long as I want without extra pain","I have extra pain when standing but it does not increase with time","Pain prevents me standing for more than 1 hour","Pain prevents me standing for more than 30 minutes","Pain prevents me standing for more than 10 minutes","Pain prevents me standing at all"]},
-      {text:"7. Sleeping",opts:["My sleep is never disturbed by pain","My sleep is occasionally disturbed by pain","Because of pain I have less than 6 hours sleep","Because of pain I have less than 4 hours sleep","Because of pain I have less than 2 hours sleep","Pain prevents me sleeping at all"]},
-      {text:"8. Sex life (if applicable)",opts:["My sex life is normal and causes no extra pain","My sex life is normal but causes some extra pain","My sex life is nearly normal but is very painful","My sex life is severely restricted by pain","My sex life is nearly absent because of pain","Pain prevents any sex life at all","Not applicable"]},
-      {text:"9. Social life",opts:["My social life is normal and gives me no extra pain","My social life is normal but increases the degree of pain","Pain has no significant effect on my social life apart from limiting my more energetic interests","Pain has restricted my social life and I do not go out as often","Pain has restricted my social life to my home","I have no social life because of pain"]},
-      {text:"10. Travelling",opts:["I can travel anywhere without pain","I can travel anywhere but it gives extra pain","Pain is bad but I manage journeys over two hours","Pain restricts me to journeys of less than one hour","Pain restricts me to short necessary journeys under 30 minutes","Pain prevents me travelling except to receive treatment"]}
+      {text:"1. I thought about it when I didn't mean to.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"2. I avoided letting myself get upset when I thought about it or was reminded of it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"3. I tried to remove it from memory.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"4. I had trouble falling asleep or staying asleep, because of pictures or thoughts about it that came into my mind.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"5. I had waves of strong feelings about it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"6. I had dreams about it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"7. I stayed away from reminders of it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"8. I felt as if it hadn't happened or it wasn't real.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"9. I tried not to talk about it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"10. Pictures about it popped into my mind.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"11. Other things kept making me think about it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"12. I was aware that I still had a lot of feelings about it, but I didn't deal with them.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"13. I tried not to think about it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"14. Any reminder brought back feelings about it.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]},
+      {text:"15. My feelings about it were kind of numb.",opts:["0 – Not at all","1 – Rarely","3 – Sometimes","5 – Often"]}
     ]
   },
 
-  ndi: {
-    label:"Neck Disability Index", abbr:"NDI",
-    name:"Neck Disability Index (NDI)",
-    intro:"This questionnaire helps your physiotherapist understand how your neck pain affects everyday life. Please select ONE statement per section that best describes your current situation.",
+  k10: {
+    label:"Kessler K10", abbr:"K-10",
+    name:"Kessler Psychological Distress Scale (K-10)",
+    intro:"These questions concern how you have been feeling in the past 4 weeks. For each question, please select the response that best describes the amount of time you felt that way.",
     questions:[
-      {text:"1. Pain Intensity",opts:["I have no pain at the moment","The pain is very mild at the moment","The pain is moderate at the moment","The pain is fairly severe at the moment","The pain is very severe at the moment","The pain is the worst imaginable at the moment"]},
-      {text:"2. Personal Care (washing, dressing)",opts:["I can look after myself normally without causing extra pain","I can look after myself normally but it causes extra pain","It is painful to look after myself and I am slow and careful","I need some help but manage most of my personal care","I need help every day in most aspects of self care","I do not get dressed, I wash with difficulty and stay in bed"]},
-      {text:"3. Lifting",opts:["I can lift heavy weights without extra pain","I can lift heavy weights but it gives extra pain","Pain prevents me lifting heavy weights off the floor, but I can manage if conveniently placed","Pain prevents me lifting heavy weights, but I can manage light to medium weights if conveniently placed","I can only lift very light weights","I cannot lift or carry anything at all"]},
-      {text:"4. Reading",opts:["I can read as much as I want with no pain in my neck","I can read as much as I want with slight pain in my neck","I can read as much as I want with moderate pain in my neck","I cannot read as much as I want because of moderate pain in my neck","I can hardly read at all because of severe pain in my neck","I cannot read at all"]},
-      {text:"5. Headaches",opts:["I have no headaches at all","I have slight headaches which come infrequently","I have moderate headaches which come infrequently","I have moderate headaches which come frequently","I have severe headaches which come frequently","I have headaches almost all the time"]},
-      {text:"6. Concentration",opts:["I can concentrate fully when I want to with no difficulty","I can concentrate fully when I want to with slight difficulty","I have a fair degree of difficulty in concentrating when I want to","I have a lot of difficulty in concentrating when I want to","I have a great deal of difficulty in concentrating when I want to","I cannot concentrate at all"]},
-      {text:"7. Work",opts:["I can do as much work as I want to","I can only do my usual work, but no more","I can do most of my usual work, but no more","I cannot do my usual work","I can hardly do any work at all","I cannot do any work at all"]},
-      {text:"8. Driving",opts:["I can drive my car without any neck pain","I can drive my car as long as I want with slight pain in my neck","I can drive my car as long as I want with moderate pain in my neck","I cannot drive my car as long as I want because of moderate pain in my neck","I can hardly drive at all because of severe pain in my neck","I cannot drive my car at all","I do not drive"]},
-      {text:"9. Sleeping",opts:["I have no trouble sleeping","My sleep is slightly disturbed (less than 1 hr sleepless)","My sleep is mildly disturbed (1–2 hrs sleepless)","My sleep is moderately disturbed (2–3 hrs sleepless)","My sleep is greatly disturbed (3–5 hrs sleepless)","My sleep is completely disturbed (5–7 hrs sleepless)"]},
-      {text:"10. Recreation",opts:["I am able to engage in all my recreational activities with no neck pain","I am able to engage in all my recreational activities with some pain in my neck","I am able to engage in most but not all of my usual recreational activities because of pain","I am able to engage in only a few of my usual recreational activities because of pain","I can hardly engage in any recreational activities because of pain","I cannot engage in any recreational activities at all"]}
+      {text:"1. In the past 4 weeks, about how often did you feel tired out for no good reason?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"2. About how often did you feel nervous?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"3. About how often did you feel so nervous that nothing could calm you down?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"4. About how often did you feel hopeless?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"5. About how often did you feel restless or fidgety?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"6. About how often did you feel so restless you could not sit still?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"7. About how often did you feel depressed?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"8. About how often did you feel that everything was an effort?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"9. About how often did you feel so sad that nothing could cheer you up?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]},
+      {text:"10. About how often did you feel worthless?",opts:["1 – None of the time","2 – A little of the time","3 – Some of the time","4 – Most of the time","5 – All of the time"]}
     ]
   },
 
-  // ── UPPER LIMB ───────────────────────────────────────
-
-  dash: {
-    label:"DASH", abbr:"DASH",
-    name:"DASH — Disabilities of the Arm, Shoulder and Hand",
-    intro:"Please rate your ability to do the following activities in the last week. 1 = No difficulty, 2 = Mild difficulty, 3 = Moderate difficulty, 4 = Severe difficulty, 5 = Unable.",
+  // ─── WORK & FUNCTION ────────────────────────────
+  wpai: {
+    label:"WPAI (Work Productivity)", abbr:"WPAI",
+    name:"Work Productivity and Activity Impairment (WPAI)",
+    intro:"The following questions ask about the effect of your health problem on your ability to work and perform regular activities over the past 7 days.",
     questions:[
-      {text:"Open a tight or new jar",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Write",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Turn a key",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Prepare a meal",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Push open a heavy door",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Place an object on a shelf above your head",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Do heavy household chores (e.g. washing floors, walls)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Garden or do yard work",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Make a bed",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Carry a shopping bag or briefcase",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Carry a heavy object (over 5 kg)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Change a light bulb overhead",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Wash or blow dry your hair",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Wash your back",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Put on a pullover sweater",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Use a knife to cut food",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Recreational activities requiring little effort (e.g. card playing, knitting)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Recreational activities taking some force through your arm/shoulder/hand (e.g. golf, tennis, hammering)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Recreational activities where you move your arm freely (e.g. frisbee, badminton)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Manage transportation (getting from one place to another)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"Sexual activities",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable / Not applicable"]},
-      {text:"To what extent has your arm/shoulder/hand problem interfered with your social activities in the past week?",opts:["1 – Not at all","2 – Slightly","3 – Moderately","4 – Quite a bit","5 – Extremely"]},
-      {text:"Were you limited in your work or daily activities because of your arm/shoulder/hand problem?",opts:["1 – Not limited at all","2 – Slightly limited","3 – Moderately limited","4 – Very limited","5 – Unable"]},
-      {text:"Arm, shoulder or hand pain",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"Arm, shoulder or hand pain when performing specific activities",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"Tingling (pins and needles) in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"Weakness in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"Stiffness in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"Difficulty sleeping due to pain in your arm, shoulder or hand",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – So much difficulty — unable to sleep"]},
-      {text:"I feel less capable, less confident or less useful because of my arm, shoulder or hand problem",opts:["1 – Strongly disagree","2 – Disagree","3 – Neither agree nor disagree","4 – Agree","5 – Strongly agree"]}
+      {text:"1. Are you currently employed (working for pay)?",opts:["Yes","No"]},
+      {text:"2. During the past 7 days, how many hours did you miss from work because of problems associated with your health?",opts:["0 hours","1–4 hours","5–8 hours","9–16 hours","17–24 hours","25–32 hours","33–40 hours","More than 40 hours","Not applicable"]},
+      {text:"3. During the past 7 days, how many hours did you miss from work because of any other reason (e.g. vacation, holidays)?",opts:["0 hours","1–4 hours","5–8 hours","9–16 hours","17–24 hours","More than 24 hours","Not applicable"]},
+      {text:"4. During the past 7 days, how many hours did you actually work?",opts:["0 hours","1–10 hours","11–20 hours","21–30 hours","31–40 hours","More than 40 hours","Not applicable"]},
+      {text:"5. During the past 7 days, how much did your health problem affect your productivity while you were working? (0 = Health problem had no effect on my work, 10 = Health problem completely prevented me from working)",opts:["0","1","2","3","4","5","6","7","8","9","10","Not applicable"]},
+      {text:"6. During the past 7 days, how much did your health problem affect your ability to do your regular daily activities, other than work at a job? (0 = No effect, 10 = Completely prevented activities)",opts:["0","1","2","3","4","5","6","7","8","9","10"]}
     ]
   },
 
-  quickdash: {
-    label:"QuickDASH", abbr:"QuickDASH",
-    name:"QuickDASH — Disabilities of the Arm, Shoulder and Hand (Short Form)",
-    intro:"Please rate your ability to do the following activities in the last week. 1 = No difficulty, 2 = Mild difficulty, 3 = Moderate difficulty, 4 = Severe difficulty, 5 = Unable.",
+  fist: {
+    label:"Function in Sitting (FIST)", abbr:"FIST",
+    name:"Function in Sitting Test (FIST)",
+    intro:"This test is normally performed in clinic. Please answer based on what you feel you would be able to do today.",
     questions:[
-      {text:"1. Open a tight or new jar",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"2. Do heavy household chores (e.g. wash walls, floors)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"3. Carry a shopping bag or briefcase",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"4. Wash your back",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"5. Use a knife to cut food",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"6. Recreational activities in which you take some force or impact through your arm, shoulder or hand (e.g. golf, hammering, tennis)",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – Unable"]},
-      {text:"7. During the past week, to what extent has your arm, shoulder or hand problem interfered with your normal social activities with family, friends, neighbours, or groups?",opts:["1 – Not at all","2 – Slightly","3 – Moderately","4 – Quite a bit","5 – Extremely"]},
-      {text:"8. Were you limited in your work or other regular daily activities as a result of your arm, shoulder or hand problem?",opts:["1 – Not limited at all","2 – Slightly limited","3 – Moderately limited","4 – Very limited","5 – Unable"]},
-      {text:"9. Arm, shoulder or hand pain",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"10. Tingling (pins and needles) in your arm, shoulder or hand",opts:["1 – None","2 – Mild","3 – Moderate","4 – Severe","5 – Extreme"]},
-      {text:"11. During the past week, how much difficulty have you had sleeping due to the pain in your arm, shoulder or hand?",opts:["1 – No difficulty","2 – Mild difficulty","3 – Moderate difficulty","4 – Severe difficulty","5 – So much difficulty — unable to sleep"]}
-    ]
-  },
-
-  visap: {
-    label:"VISA-P (Patellar tendinopathy)", abbr:"VISA-P",
-    name:"VISA-P — Victorian Institute of Sport Assessment – Patella",
-    intro:"Please answer all questions. For questions 1–6, circle the number that best represents your pain or function. For questions 7 and 8, follow the specific instructions.",
-    questions:[
-      {text:"1. For how many minutes can you sit pain free?",opts:["0 – 0 min","1","2","3","4","5","6","7","8","9","10 – >100 min"]},
-      {text:"2. Do you have pain walking down stairs with a normal gait cycle?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"3. Do you have pain at the knee with full active knee extension (knee straightening)?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"4. Do you have pain when doing a full weight bearing lunge?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"5. Do you have problems squatting?",opts:["0 – Cannot squat at all","1","2","3","4","5","6","7","8","9","10 – No problems"]},
-      {text:"6. Do you have pain during or immediately after doing 10 single leg hops?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"7. Are you currently undertaking sport or physical activity?",opts:["0 – Not at all","4 – Modified training or competition","7 – Full training or competition but at reduced level","10 – Competing at the same or higher level as when symptoms began"]},
-      {text:"8. Please complete either A, B or C. A: If you have no pain while undertaking sport, for how long can you undertake sport? B: If you have pain while undertaking sport, for how long can you undertake sport? C: If you have pain that stops you from completing sport, how long can you undertake sport before the pain stops you?",opts:["A: 0 – 0 min","A: 7 – 1–5 min","A: 14 – 6–10 min","A: 20 – 11–15 min","A: 30 – >15 min","B: 0 – 0 min","B: 4 – 1–5 min","B: 10 – 6–10 min","B: 14 – 11–15 min","B: 20 – >15 min","C: 0 – 0 min","C: 2 – 1–5 min","C: 5 – 6–10 min","C: 8 – 11–15 min","C: 14 – >15 min"]}
-    ]
-  },
-
-  // ── LOWER LIMB ───────────────────────────────────────
-
-  koos: {
-    label:"KOOS (Knee)", abbr:"KOOS",
-    name:"KOOS — Knee Injury & Osteoarthritis Outcome Score",
-    intro:"The following questions relate to how your knee problem has affected you in the past week. Please select the answer that most closely describes your situation.",
-    questions:[
-      {text:"S1. How severe is your knee stiffness after first waking in the morning?",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P1. How often do you experience knee pain?",opts:["Never","Monthly","Weekly","Daily","Always"]},
-      {text:"P2. Pain — twisting/pivoting on your knee",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P3. Pain — fully straightening your knee",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P4. Pain — fully bending your knee",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P5. Pain — walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P6. Pain — going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P7. Pain — at night while in bed",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A1. Difficulty going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A2. Difficulty rising from sitting",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A3. Difficulty standing",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A4. Difficulty bending to floor / picking up an object",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A5. Difficulty walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A6. Difficulty getting in/out of a car",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A7. Difficulty shopping",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"SP1. How often are you aware of your knee problem?",opts:["Never","Monthly","Weekly","Daily","Constantly"]},
-      {text:"SP2. Have you modified your lifestyle to avoid activities that may worsen your knee?",opts:["Not at all","Mildly","Moderately","Severely","Totally"]},
-      {text:"Q1. Overall, how would you rate your knee?",opts:["Excellent","Good","Fair","Poor","Very poor"]}
-    ]
-  },
-
-  hoos: {
-    label:"HOOS (Hip)", abbr:"HOOS",
-    name:"HOOS — Hip Disability & Osteoarthritis Outcome Score",
-    intro:"The following questions relate to how your hip problem has affected you in the past week. Please select the answer that most closely describes your situation.",
-    questions:[
-      {text:"S1. How severe is your hip stiffness after first waking in the morning?",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P1. How often do you experience hip pain?",opts:["Never","Monthly","Weekly","Daily","Always"]},
-      {text:"P2. Pain — going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P3. Pain — at night while in bed",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P4. Pain — sitting or lying",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P5. Pain — standing upright",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"P6. Pain — walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A1. Difficulty going up or down stairs",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A2. Difficulty rising from sitting",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A3. Difficulty standing",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A4. Difficulty bending to floor / picking up an object",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A5. Difficulty walking on flat surface",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"A6. Difficulty getting in/out of a car",opts:["None","Mild","Moderate","Severe","Extreme"]},
-      {text:"SP1. How often are you aware of your hip problem?",opts:["Never","Monthly","Weekly","Daily","Constantly"]},
-      {text:"Q1. Overall, how would you rate your hip?",opts:["Excellent","Good","Fair","Poor","Very poor"]}
-    ]
-  },
-
-  faam: {
-    label:"FAAM (Ankle / Foot)", abbr:"FAAM",
-    name:"FAAM — Foot & Ankle Ability Measure",
-    intro:"Due to your foot and ankle, how much difficulty do you have with the following activities in the past week?",
-    questions:[
-      {text:"Standing",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking on even ground",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking on even ground without shoes",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking up hills",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking down hills",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Going up stairs",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Going down stairs",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking on uneven ground",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Stepping up and down curbs",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Squatting",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Coming up on your toes",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking initially (first few steps)",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking 5 minutes or less",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking approximately 10 minutes",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Walking 15 minutes or more",opts:["No difficulty","Slight difficulty","Moderate difficulty","Extreme difficulty","Unable to do"]},
-      {text:"Overall, how would you rate your foot/ankle?",opts:["Normal","Nearly normal","Abnormal","Severely abnormal"]}
-    ]
-  },
-
-  visaa: {
-    label:"VISA-A (Achilles tendinopathy)", abbr:"VISA-A",
-    name:"VISA-A — Victorian Institute of Sport Assessment – Achilles",
-    intro:"Please answer all questions. For questions 1–7, select the number that best represents your pain or function. For question 8, follow the specific instructions.",
-    questions:[
-      {text:"1. For how many minutes can you sit pain free?",opts:["0 – 0 min","1","2","3","4","5","6","7","8","9","10 – >100 min"]},
-      {text:"2. Do you have pain walking on flat ground?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"3. Do you have pain walking upstairs?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"4. Do you have pain or stiffness first thing in the morning?",opts:["0 – Severe pain/stiffness","1","2","3","4","5","6","7","8","9","10 – No pain/stiffness"]},
-      {text:"5. Do you have pain when you stand on your toes (calf raise)?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"6. Do you have pain when you do a single leg calf raise?",opts:["0 – Severe pain","1","2","3","4","5","6","7","8","9","10 – No pain"]},
-      {text:"7. How many single leg calf raises can you do?",opts:["0 – 0","1 – 1–2","3 – 3–5","5 – 6–9","6 – 10–19","7 – 20+"]},
-      {text:"8. Are you currently undertaking sport or physical activity?",opts:["0 – Not at all","4 – Modified training / competition only","7 – Full training / competition but performance affected","10 – Competing at the same or higher level as before"]}
-    ]
-  },
-
-  oxford_knee: {
-    label:"Oxford Knee Score", abbr:"OKS",
-    name:"Oxford Knee Score (OKS)",
-    intro:"The following questions are about your knee and the problems you have with it. Please answer all questions by selecting the response that best applies to you over the past 4 weeks.",
-    questions:[
-      {text:"1. How would you describe the pain you usually have in your knee?",opts:["None","Very mild","Mild","Moderate","Severe"]},
-      {text:"2. Have you had any trouble with washing and drying yourself (all over) because of your knee?",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
-      {text:"3. Have you had any trouble getting in and out of a car or using public transport because of your knee? (whichever you tend to use)",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
-      {text:"4. For how long have you been able to walk before pain from your knee becomes severe? (with or without a walking stick)",opts:["No pain / more than 30 minutes","16–30 minutes","5–15 minutes","Around the house only","Not at all — pain is severe on walking"]},
-      {text:"5. After a meal (sat at a table), how painful has it been for you to stand up from a chair because of your knee?",opts:["Not at all painful","Slightly painful","Moderately painful","Very painful","Unbearable"]},
-      {text:"6. Have you been limping when walking, because of your knee?",opts:["Rarely / never","Sometimes or just at first","Often, not just at first","Most of the time","All of the time"]},
-      {text:"7. Could you kneel down and get up again afterwards?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
-      {text:"8. Have you been troubled by pain from your knee in bed at night?",opts:["No nights","Only 1 or 2 nights","Some nights","Most nights","Every night"]},
-      {text:"9. How much has pain from your knee interfered with your usual work (including housework)?",opts:["Not at all","A little bit","Moderately","Greatly","Totally"]},
-      {text:"10. Have you felt that your knee might suddenly 'give way' or let you down?",opts:["Rarely / never","Sometimes or just at first","Often, not just at first","Most of the time","All of the time"]},
-      {text:"11. Could you do the household shopping on your own?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
-      {text:"12. Could you walk down one flight of stairs?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]}
-    ]
-  },
-
-  oxford_hip: {
-    label:"Oxford Hip Score", abbr:"OHS",
-    name:"Oxford Hip Score (OHS)",
-    intro:"The following questions are about your hip and the problems you have with it. Please answer all questions by selecting the response that best applies to you over the past 4 weeks.",
-    questions:[
-      {text:"1. How would you describe the pain you usually have in your hip?",opts:["None","Very mild","Mild","Moderate","Severe"]},
-      {text:"2. Have you had any trouble with washing and drying yourself (all over) because of your hip?",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
-      {text:"3. Have you had any trouble getting in and out of a car or using public transport because of your hip?",opts:["No trouble at all","Very little trouble","Moderate trouble","Extreme difficulty","Impossible to do"]},
-      {text:"4. Have you been able to put on a pair of socks, stockings, or tights?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
-      {text:"5. Could you do the household shopping on your own?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
-      {text:"6. For how long have you been able to walk before pain from your hip becomes severe?",opts:["No pain / more than 30 minutes","16–30 minutes","5–15 minutes","Around the house only","Not at all — pain is severe on walking"]},
-      {text:"7. Have you been able to climb a flight of stairs?",opts:["Yes, easily","With little difficulty","With moderate difficulty","With extreme difficulty","No, impossible"]},
-      {text:"8. After a meal (sat at a table), how painful has it been for you to stand up from a chair because of your hip?",opts:["Not at all painful","Slightly painful","Moderately painful","Very painful","Unbearable"]},
-      {text:"9. Have you been limping when walking, because of your hip?",opts:["Rarely / never","Sometimes or just at first","Often, not just at first","Most of the time","All of the time"]},
-      {text:"10. Have you had any sudden severe pain — 'shooting', 'stabbing' or 'spasms' — from the affected hip?",opts:["No days","Only 1 or 2 days","Some days","Most days","Every day"]},
-      {text:"11. How much has pain from your hip interfered with your usual work (including housework)?",opts:["Not at all","A little bit","Moderately","Greatly","Totally"]},
-      {text:"12. Have you been troubled by pain from your hip in bed at night?",opts:["No nights","Only 1 or 2 nights","Some nights","Most nights","Every night"]}
+      {text:"1. Steady-state sitting balance — Can you sit unsupported for 30 seconds with feet supported?",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"2. Sitting with eyes closed — Sit unsupported with eyes closed for 30 seconds",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"3. Lift foot — Lift one foot off floor 3 seconds while sitting",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"4. Pick up object from floor — Forward",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"5. Posterior nudge — Maintain balance with posterior nudge",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"6. Lateral nudge — Maintain balance with lateral nudge",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"7. Anterior nudge — Maintain balance with anterior nudge",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"8. Forward reach — Reach forward 8 inches",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"9. Lateral reach — Reach right and left",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"10. Pick up object from floor — Lateral",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"11. Posterior reach / look — Look over shoulder",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"12. Shake head 'no'",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"13. Eyes closed, lean back",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]},
+      {text:"14. Scoot forward — Scoot in chair without using arms",opts:["4 – Independent","3 – Verbal cues / increased time","2 – Upper extremity support","1 – Minimal assistance","0 – Dependent"]}
     ]
   }
 
 };
 
-// ─── STATE ────────────────────────────────────────────
 let selectedQx = [];
 let patientStepOrder = [];
 let patientStepIndex = 0;
 
-// ─── SCREENS ──────────────────────────────────────────
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// ─── PIN ──────────────────────────────────────────────
 document.getElementById('pin-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPin();});
 
 function checkPin(){
@@ -804,18 +859,18 @@ function logout(){
   showScreen('screen-pin');
 }
 
-// ─── ADMIN ────────────────────────────────────────────
 function buildAdminPanel(){
   const panel = document.getElementById('qx-panel');
   panel.innerHTML='';
   QX_CATEGORIES.forEach(cat=>{
     const catDiv = document.createElement('div');
     catDiv.className='qx-category';
-    catDiv.innerHTML=`<div class="qx-cat-label">${cat.label}</div><div class="qx-grid" id="qxgrid-${cat.label}"></div>`;
+    catDiv.innerHTML=`<div class="qx-cat-label">${cat.label}</div><div class="qx-grid"></div>`;
     panel.appendChild(catDiv);
     const grid = catDiv.querySelector('.qx-grid');
     cat.items.forEach(key=>{
       const qx = QUESTIONNAIRES[key];
+      if(!qx) return;
       const tile = document.createElement('label');
       tile.className='qx-tile';
       tile.innerHTML=`
@@ -853,28 +908,22 @@ ${qxLines}
 
 It should only take a few minutes to complete.${note?'\n\n'+note:''}
 
-If you have any questions, please contact us on 0403 623 622 or reply to this email.
-
-Kind regards,
-Khalid Khalak
-Stride Care Physiotherapy
-stridecare@outlook.com | 0403 623 622 | stridecare.au`);
+If you have any questions, please reply to this email.`);
   sessionStorage.setItem('sc_qx', JSON.stringify(checked));
   window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
 }
 
-// ─── PATIENT FORM ─────────────────────────────────────
 function buildPatientForm(){
   const stored = sessionStorage.getItem('sc_qx');
   if(stored) selectedQx = JSON.parse(stored);
   patientStepOrder = ['details','pain',...selectedQx,'consent'];
   patientStepIndex = 0;
 
-  // Build dynamic qx steps
   const container = document.getElementById('pstep-qx-container');
   container.innerHTML='';
   selectedQx.forEach(key=>{
     const qx = QUESTIONNAIRES[key];
+    if(!qx) return;
     let html=`<div id="pstep-${key}" class="pstep hidden">
       <div class="section-card">
         <div class="section-title">Questionnaire</div>
@@ -883,7 +932,7 @@ function buildPatientForm(){
     qx.questions.forEach((q,qi)=>{
       html+=`<div class="om-question"><p>${q.text}</p><div class="om-options">`;
       q.opts.forEach(opt=>{
-        html+=`<label class="om-opt"><input type="radio" name="qx_${key}_${qi}" value="${opt}"
+        html+=`<label class="om-opt"><input type="radio" name="qx_${key}_${qi}" value="${opt.replace(/"/g,'&quot;')}"
           onchange="this.closest('.om-options').querySelectorAll('.om-opt').forEach(o=>o.classList.remove('selected'));this.closest('.om-opt').classList.add('selected');">
           ${opt}</label>`;
       });
@@ -923,7 +972,6 @@ function updateProgress(){
   document.getElementById('step-label').textContent=`Step ${patientStepIndex+1} of ${patientStepOrder.length}`;
 }
 
-// ─── VALIDATION ───────────────────────────────────────
 function validateStep(){
   const key=patientStepOrder[patientStepIndex];
   if(key==='details'){
@@ -943,7 +991,6 @@ function validateStep(){
   return true;
 }
 
-// ─── SCALES ───────────────────────────────────────────
 function buildScales(){
   buildScale('scale-rest','f-pain-rest');
   buildScale('scale-activity','f-pain-activity');
@@ -960,7 +1007,6 @@ function buildScale(cid,hid){
   }
 }
 
-// ─── HELPERS ──────────────────────────────────────────
 function gv(id){const e=document.getElementById(id);return e?e.value.trim():'';}
 function getRadio(name){const s=document.querySelector(`input[name="${name}"]:checked`);return s?s.value:'';}
 function getCheckboxes(name){return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(e=>e.value).join(', ');}
@@ -976,7 +1022,6 @@ document.addEventListener('change',function(e){
   }
 });
 
-// ─── SUBMIT ───────────────────────────────────────────
 async function submitForm(){
   if(!document.getElementById('f-consent').checked)return alert('Please confirm your consent.'),false;
   const btn=document.getElementById('btn-submit');
@@ -985,6 +1030,7 @@ async function submitForm(){
   let qxOutput='';
   selectedQx.forEach(key=>{
     const qx=QUESTIONNAIRES[key];
+    if(!qx) return;
     qxOutput+=`\n━━ ${qx.name} ━━\n`;
     qx.questions.forEach((q,qi)=>{
       const sel=document.querySelector(`input[name="qx_${key}_${qi}"]:checked`);
@@ -1017,7 +1063,7 @@ ${qxOutput}
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         access_key:WEB3FORMS_KEY,
-        subject:`Intake — ${gv('f-firstname')} ${gv('f-lastname')} | ${selectedQx.map(k=>QUESTIONNAIRES[k].abbr).join(', ')}`,
+        subject:`Intake — ${gv('f-firstname')} ${gv('f-lastname')} | ${selectedQx.map(k=>QUESTIONNAIRES[k]?.abbr).filter(Boolean).join(', ')}`,
         from_name:'Stride Care Intake Form',
         to:'stridecare@outlook.com',
         message:body
@@ -1027,7 +1073,7 @@ ${qxOutput}
     if(data.success){showScreen('screen-success');}
     else throw new Error();
   }catch{
-    alert('Submission failed. Please try again or contact us on 0403 623 622.');
+    alert('Submission failed. Please try again or contact us by replying to the email from your physiotherapist.');
     btn.disabled=false;btn.textContent='Submit →';
   }
 }
